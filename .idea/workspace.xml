@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="36c0c59a-325b-4375-8ab4-7227a1a53a89" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1j1YXbWBITNnQOpavPV94OQIkTG" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="dart.analysis.tool.window.force.activate" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="36c0c59a-325b-4375-8ab4-7227a1a53a89" name="Default Changelist" comment="" />
+      <created>1602973114638</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1602973114638</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="158" y="72" key="#PSD" timestamp="1605935180174">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="158" y="72" key="#PSD/0.0.1280.680@0.0.1280.680" timestamp="1605935180174" />
+    <state x="142" y="0" key="SettingsEditor" timestamp="1605935150398">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1605935150398" />
+    <state x="633" y="0" width="653" height="687" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1605935218037">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="633" y="0" width="653" height="687" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1280.680@0.0.1280.680" timestamp="1605935218037" />
+    <state x="656" y="167" key="com.intellij.ide.util.TipDialog" timestamp="1605933994121">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="656" y="167" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1605933994121" />
+  </component>
+</project>
