@@ -43,7 +43,6 @@ class _ProfileState extends State<Profile> {
                   UserData userData = snapshot.data;
                   Future<List> generateData() async {
                     theProfileList = [
-                      Container(height: screenWidth * 0.05),
                       Container(
                         padding: EdgeInsets.all(0),
                         width: screenWidth * 0.9,
@@ -247,6 +246,64 @@ class _ProfileState extends State<Profile> {
                           ),
                         ),
                       ),
+                      Container(height: 10),
+                      GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          height: 50,
+                          width: screenWidth * 0.9,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color:
+                                ThemeProvider.themeOf(context).data.accentColor,
+                          ),
+                          child: Row(
+                            children: [
+                              Container(width: screenWidth * 0.05),
+                              Icon(Icons.policy, size: 30),
+                              Container(width: screenWidth * 0.05),
+                              Text(
+                                "Privacy Policy",
+                                style: TextStyle(
+                                    color: ThemeProvider.themeOf(context)
+                                        .data
+                                        .cardColor,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w900),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(height: 10),
+                      GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          height: 50,
+                          width: screenWidth * 0.9,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color:
+                                ThemeProvider.themeOf(context).data.accentColor,
+                          ),
+                          child: Row(
+                            children: [
+                              Container(width: screenWidth * 0.05),
+                              Icon(Icons.wysiwyg, size: 30),
+                              Container(width: screenWidth * 0.05),
+                              Text(
+                                "Terms of Conditions",
+                                style: TextStyle(
+                                    color: ThemeProvider.themeOf(context)
+                                        .data
+                                        .cardColor,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w900),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
                     ];
                     return theProfileList;
                   }
@@ -260,42 +317,42 @@ class _ProfileState extends State<Profile> {
                           if (snapshot.hasData) {
                             return Stack(
                               children: [
+                                Column(children: <Widget>[
+                                  Container(height: 31),
+                                  Container(height: screenWidth * 0.15),
+                                  Row(
+                                    children: <Widget>[
+                                      Spacer(),
+                                      Text(
+                                        'Account',
+                                        style: TextStyle(
+                                            color:
+                                                ThemeProvider.themeOf(context)
+                                                    .data
+                                                    .cardColor,
+                                            fontSize: 30,
+                                            fontWeight: FontWeight.w900),
+                                      ),
+                                      Spacer(),
+                                    ],
+                                  ),
+                                ]),
                                 Column(
-                                  children: <Widget>[
+                                  children: [
                                     Container(height: 31),
                                     Container(height: screenWidth * 0.15),
                                     Container(
-                                      height: screenHeight -
-                                          40 -
-                                          32 -
-                                          (screenWidth * 0.3),
-                                      width: screenWidth * 0.9,
-                                      child: SingleChildScrollView(
-                                        child: Column(
-                                          children: <Widget>[
-                                            Row(
-                                              children: <Widget>[
-                                                Spacer(),
-                                                Text(
-                                                  'Account',
-                                                  style: TextStyle(
-                                                      color:
-                                                          ThemeProvider.themeOf(
-                                                                  context)
-                                                              .data
-                                                              .cardColor,
-                                                      fontSize: 30,
-                                                      fontWeight:
-                                                          FontWeight.w900),
-                                                ),
-                                                Spacer(),
-                                              ],
-                                            ),
-                                            ...theProfileList
-                                          ],
-                                        ),
-                                      ),
-                                    ),
+                                        width: screenWidth * 0.9, height: 30),
+                                    Container(height: screenWidth * 0.05),
+                                    Container(
+                                        height: screenHeight -
+                                            120 -
+                                            32 -
+                                            (screenWidth * 0.40),
+                                        width: screenWidth * 0.9,
+                                        child: SingleChildScrollView(
+                                            child: Column(
+                                                children: theProfileList)))
                                   ],
                                 ),
                                 showStreakEnd && doItOnce
@@ -330,246 +387,387 @@ class _ProfileState extends State<Profile> {
                                         ],
                                       ),
                                     ),
+                                  ],
+                                ),
+                                Column(
+                                  children: [
+                                    Container(height: 31),
+                                    Container(height: screenWidth * 0.15),
+                                    Container(
+                                        width: screenWidth * 0.9, height: 30),
                                     Container(height: screenWidth * 0.05),
                                     Container(
-                                      padding: EdgeInsets.all(0),
+                                      height: screenHeight -
+                                          120 -
+                                          32 -
+                                          (screenWidth * 0.40),
                                       width: screenWidth * 0.9,
-                                      child: ToggleSwitch(
-                                        minWidth: screenWidth * 0.45 - 0.5,
-                                        minHeight: 50,
-                                        initialLabelIndex:
-                                            ThemeProvider.themeOf(context)
+                                      child: SingleChildScrollView(
+                                        child: Column(
+                                          children: [
+                                            Container(
+                                              padding: EdgeInsets.all(0),
+                                              width: screenWidth * 0.9,
+                                              child: ToggleSwitch(
+                                                minWidth:
+                                                    screenWidth * 0.45 - 0.5,
+                                                minHeight: 50,
+                                                initialLabelIndex:
+                                                    ThemeProvider.themeOf(
+                                                                    context)
+                                                                .data
+                                                                .cardColor ==
+                                                            Colors.black
+                                                        ? 0
+                                                        : 1,
+                                                activeFgColor:
+                                                    ThemeProvider.themeOf(
+                                                            context)
                                                         .data
-                                                        .cardColor ==
-                                                    Colors.black
-                                                ? 0
-                                                : 1,
-                                        activeFgColor:
-                                            ThemeProvider.themeOf(context)
-                                                .data
-                                                .cardColor,
-                                        inactiveBgColor:
-                                            ThemeProvider.themeOf(context)
-                                                .data
-                                                .accentColor,
-                                        inactiveFgColor:
-                                            ThemeProvider.themeOf(context)
-                                                .data
-                                                .cardColor,
-                                        labels: ['', ''],
-                                        icons: [
-                                          Icons.wb_sunny,
-                                          Icons.nightlight_round
-                                        ],
-                                        iconSize: 30.0,
-                                        activeBgColors: [
-                                          Color.fromRGBO(29, 161, 242, 1),
-                                          Color.fromRGBO(29, 161, 242, 1),
-                                        ],
-                                        onToggle: (index) {
-                                          print(ThemeProvider.themeOf(context)
-                                                  .data
-                                                  .cardColor ==
-                                              Colors.black);
-                                          print(ThemeProvider.themeOf(context)
-                                                  .data
-                                                  .cardColor ==
-                                              Colors.white);
-                                          print('switched to: $index');
-                                          if (index == 0) {
-                                            ThemeProvider.controllerOf(context)
-                                                .setTheme('lighted');
-                                          } else {
-                                            ThemeProvider.controllerOf(context)
-                                                .setTheme('darkened');
-                                          }
-                                          setState(() {});
-                                          setState(() {});
-                                        },
-                                      ),
-                                    ),
-                                    Container(height: 10),
-                                    GestureDetector(
-                                      onTap: () {},
-                                      child: Container(
-                                        height: 50,
-                                        width: screenWidth * 0.9,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          color: ThemeProvider.themeOf(context)
-                                              .data
-                                              .accentColor,
-                                        ),
-                                        child: Row(
-                                          children: [
-                                            Container(
-                                                width: screenWidth * 0.05),
-                                            Icon(Icons.language, size: 30),
-                                            Container(
-                                                width: screenWidth * 0.05),
-                                            Text(
-                                              "Language",
-                                              style: TextStyle(
+                                                        .cardColor,
+                                                inactiveBgColor:
+                                                    ThemeProvider.themeOf(
+                                                            context)
+                                                        .data
+                                                        .accentColor,
+                                                inactiveFgColor:
+                                                    ThemeProvider.themeOf(
+                                                            context)
+                                                        .data
+                                                        .cardColor,
+                                                labels: ['', ''],
+                                                icons: [
+                                                  Icons.wb_sunny,
+                                                  Icons.nightlight_round
+                                                ],
+                                                iconSize: 30.0,
+                                                activeBgColors: [
+                                                  Color.fromRGBO(
+                                                      29, 161, 242, 1),
+                                                  Color.fromRGBO(
+                                                      29, 161, 242, 1),
+                                                ],
+                                                onToggle: (index) {
+                                                  print(ThemeProvider.themeOf(
+                                                              context)
+                                                          .data
+                                                          .cardColor ==
+                                                      Colors.black);
+                                                  print(ThemeProvider.themeOf(
+                                                              context)
+                                                          .data
+                                                          .cardColor ==
+                                                      Colors.white);
+                                                  print('switched to: $index');
+                                                  if (index == 0) {
+                                                    ThemeProvider.controllerOf(
+                                                            context)
+                                                        .setTheme('lighted');
+                                                  } else {
+                                                    ThemeProvider.controllerOf(
+                                                            context)
+                                                        .setTheme('darkened');
+                                                  }
+                                                  setState(() {});
+                                                  setState(() {});
+                                                },
+                                              ),
+                                            ),
+                                            Container(height: 10),
+                                            GestureDetector(
+                                              onTap: () {},
+                                              child: Container(
+                                                height: 50,
+                                                width: screenWidth * 0.9,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
                                                   color: ThemeProvider.themeOf(
                                                           context)
                                                       .data
-                                                      .cardColor,
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.w900),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    Container(height: 10),
-                                    GestureDetector(
-                                      onTap: () {},
-                                      child: Container(
-                                        height: 50,
-                                        width: screenWidth * 0.9,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          color: ThemeProvider.themeOf(context)
-                                              .data
-                                              .accentColor,
-                                        ),
-                                        child: Row(
-                                          children: [
-                                            Container(
-                                                width: screenWidth * 0.05),
-                                            Icon(Icons.email, size: 30),
-                                            Container(
-                                                width: screenWidth * 0.05),
-                                            Text(
-                                              "Email",
-                                              style: TextStyle(
+                                                      .accentColor,
+                                                ),
+                                                child: Row(
+                                                  children: [
+                                                    Container(
+                                                        width:
+                                                            screenWidth * 0.05),
+                                                    Icon(Icons.language,
+                                                        size: 30),
+                                                    Container(
+                                                        width:
+                                                            screenWidth * 0.05),
+                                                    Text(
+                                                      "Language",
+                                                      style: TextStyle(
+                                                          color: ThemeProvider
+                                                                  .themeOf(
+                                                                      context)
+                                                              .data
+                                                              .cardColor,
+                                                          fontSize: 20,
+                                                          fontWeight:
+                                                              FontWeight.w900),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                            Container(height: 10),
+                                            GestureDetector(
+                                              onTap: () {},
+                                              child: Container(
+                                                height: 50,
+                                                width: screenWidth * 0.9,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
                                                   color: ThemeProvider.themeOf(
                                                           context)
                                                       .data
-                                                      .cardColor,
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.w900),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    Container(height: 10),
-                                    GestureDetector(
-                                      onTap: () {},
-                                      child: Container(
-                                        height: 50,
-                                        width: screenWidth * 0.9,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          color: ThemeProvider.themeOf(context)
-                                              .data
-                                              .accentColor,
-                                        ),
-                                        child: Row(
-                                          children: [
-                                            Container(
-                                                width: screenWidth * 0.05),
-                                            Icon(Icons.lock, size: 30),
-                                            Container(
-                                                width: screenWidth * 0.05),
-                                            Text(
-                                              "Password",
-                                              style: TextStyle(
+                                                      .accentColor,
+                                                ),
+                                                child: Row(
+                                                  children: [
+                                                    Container(
+                                                        width:
+                                                            screenWidth * 0.05),
+                                                    Icon(Icons.email, size: 30),
+                                                    Container(
+                                                        width:
+                                                            screenWidth * 0.05),
+                                                    Text(
+                                                      "Email",
+                                                      style: TextStyle(
+                                                          color: ThemeProvider
+                                                                  .themeOf(
+                                                                      context)
+                                                              .data
+                                                              .cardColor,
+                                                          fontSize: 20,
+                                                          fontWeight:
+                                                              FontWeight.w900),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                            Container(height: 10),
+                                            GestureDetector(
+                                              onTap: () {},
+                                              child: Container(
+                                                height: 50,
+                                                width: screenWidth * 0.9,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
                                                   color: ThemeProvider.themeOf(
                                                           context)
                                                       .data
-                                                      .cardColor,
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.w900),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    Container(height: 10),
-                                    GestureDetector(
-                                      onTap: () {},
-                                      child: Container(
-                                        height: 50,
-                                        width: screenWidth * 0.9,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          color: ThemeProvider.themeOf(context)
-                                              .data
-                                              .accentColor,
-                                        ),
-                                        child: Row(
-                                          children: [
-                                            Container(
-                                                width: screenWidth * 0.05),
-                                            Icon(Icons.payment_rounded,
-                                                size: 30),
-                                            Container(
-                                                width: screenWidth * 0.05),
-                                            Text(
-                                              "Subscription",
-                                              style: TextStyle(
+                                                      .accentColor,
+                                                ),
+                                                child: Row(
+                                                  children: [
+                                                    Container(
+                                                        width:
+                                                            screenWidth * 0.05),
+                                                    Icon(Icons.lock, size: 30),
+                                                    Container(
+                                                        width:
+                                                            screenWidth * 0.05),
+                                                    Text(
+                                                      "Password",
+                                                      style: TextStyle(
+                                                          color: ThemeProvider
+                                                                  .themeOf(
+                                                                      context)
+                                                              .data
+                                                              .cardColor,
+                                                          fontSize: 20,
+                                                          fontWeight:
+                                                              FontWeight.w900),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                            Container(height: 10),
+                                            GestureDetector(
+                                              onTap: () {},
+                                              child: Container(
+                                                height: 50,
+                                                width: screenWidth * 0.9,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
                                                   color: ThemeProvider.themeOf(
                                                           context)
                                                       .data
-                                                      .cardColor,
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.w900),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    Container(height: 10),
-                                    GestureDetector(
-                                      onTap: () async {
-                                        getListOnce = true;
-                                        signUpController.text = '';
-                                        percentSignUpCompletion = 0.166666;
-                                        coverTextField = false;
-                                        whichMessageNumber = 0;
-                                        showSignUpScreen = false;
-                                        showLogIn = false;
-                                        submitSignUpColor =
-                                            Color.fromRGBO(175, 29, 242, 1);
-                                        await _auth.signOut();
-                                        musicClicked = true;
-                                        courseClicked = false;
-                                        profileClicked = false;
-                                        Phoenix.rebirth(context);
-                                      },
-                                      child: Container(
-                                        height: 50,
-                                        width: screenWidth * 0.9,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          color: ThemeProvider.themeOf(context)
-                                              .data
-                                              .accentColor,
-                                        ),
-                                        child: Row(
-                                          children: [
-                                            Container(
-                                                width: screenWidth * 0.05),
-                                            Icon(Icons.logout, size: 30),
-                                            Container(
-                                                width: screenWidth * 0.05),
-                                            Text(
-                                              "Logout",
-                                              style: TextStyle(
+                                                      .accentColor,
+                                                ),
+                                                child: Row(
+                                                  children: [
+                                                    Container(
+                                                        width:
+                                                            screenWidth * 0.05),
+                                                    Icon(Icons.payment_rounded,
+                                                        size: 30),
+                                                    Container(
+                                                        width:
+                                                            screenWidth * 0.05),
+                                                    Text(
+                                                      "Subscription",
+                                                      style: TextStyle(
+                                                          color: ThemeProvider
+                                                                  .themeOf(
+                                                                      context)
+                                                              .data
+                                                              .cardColor,
+                                                          fontSize: 20,
+                                                          fontWeight:
+                                                              FontWeight.w900),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                            Container(height: 10),
+                                            GestureDetector(
+                                              onTap: () async {
+                                                getListOnce = true;
+                                                signUpController.text = '';
+                                                percentSignUpCompletion =
+                                                    0.166666;
+                                                coverTextField = false;
+                                                whichMessageNumber = 0;
+                                                showSignUpScreen = false;
+                                                showLogIn = false;
+                                                submitSignUpColor =
+                                                    Color.fromRGBO(
+                                                        175, 29, 242, 1);
+                                                await _auth.signOut();
+                                                musicClicked = true;
+                                                courseClicked = false;
+                                                profileClicked = false;
+                                                Phoenix.rebirth(context);
+                                              },
+                                              child: Container(
+                                                height: 50,
+                                                width: screenWidth * 0.9,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
                                                   color: ThemeProvider.themeOf(
                                                           context)
                                                       .data
-                                                      .cardColor,
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.w900),
-                                            )
+                                                      .accentColor,
+                                                ),
+                                                child: Row(
+                                                  children: [
+                                                    Container(
+                                                        width:
+                                                            screenWidth * 0.05),
+                                                    Icon(Icons.logout,
+                                                        size: 30),
+                                                    Container(
+                                                        width:
+                                                            screenWidth * 0.05),
+                                                    Text(
+                                                      "Logout",
+                                                      style: TextStyle(
+                                                          color: ThemeProvider
+                                                                  .themeOf(
+                                                                      context)
+                                                              .data
+                                                              .cardColor,
+                                                          fontSize: 20,
+                                                          fontWeight:
+                                                              FontWeight.w900),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                            Container(height: 10),
+                                            GestureDetector(
+                                              onTap: () {},
+                                              child: Container(
+                                                height: 50,
+                                                width: screenWidth * 0.9,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  color: ThemeProvider.themeOf(
+                                                          context)
+                                                      .data
+                                                      .accentColor,
+                                                ),
+                                                child: Row(
+                                                  children: [
+                                                    Container(
+                                                        width:
+                                                            screenWidth * 0.05),
+                                                    Icon(Icons.policy,
+                                                        size: 30),
+                                                    Container(
+                                                        width:
+                                                            screenWidth * 0.05),
+                                                    Text(
+                                                      "Privacy Policy",
+                                                      style: TextStyle(
+                                                          color: ThemeProvider
+                                                                  .themeOf(
+                                                                      context)
+                                                              .data
+                                                              .cardColor,
+                                                          fontSize: 20,
+                                                          fontWeight:
+                                                              FontWeight.w900),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                            Container(height: 10),
+                                            GestureDetector(
+                                              onTap: () {},
+                                              child: Container(
+                                                height: 50,
+                                                width: screenWidth * 0.9,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  color: ThemeProvider.themeOf(
+                                                          context)
+                                                      .data
+                                                      .accentColor,
+                                                ),
+                                                child: Row(
+                                                  children: [
+                                                    Container(
+                                                        width:
+                                                            screenWidth * 0.05),
+                                                    Icon(Icons.wysiwyg,
+                                                        size: 30),
+                                                    Container(
+                                                        width:
+                                                            screenWidth * 0.05),
+                                                    Text(
+                                                      "Terms of Conditions",
+                                                      style: TextStyle(
+                                                          color: ThemeProvider
+                                                                  .themeOf(
+                                                                      context)
+                                                              .data
+                                                              .cardColor,
+                                                          fontSize: 20,
+                                                          fontWeight:
+                                                              FontWeight.w900),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
                                           ],
                                         ),
                                       ),
@@ -607,13 +805,13 @@ class _ProfileState extends State<Profile> {
                                       width: screenWidth * (0.425),
                                       child: Center(
                                           child: Text(
-                                        "Privacy Policy",
+                                        "Share",
                                         style: TextStyle(
                                             color:
                                                 ThemeProvider.themeOf(context)
                                                     .data
                                                     .cardColor,
-                                            fontSize: 16,
+                                            fontSize: 20,
                                             fontWeight: FontWeight.w900),
                                       ))),
                                 ),
@@ -631,13 +829,13 @@ class _ProfileState extends State<Profile> {
                                         height: 50,
                                         child: Center(
                                             child: Text(
-                                          "Terms and Conditions",
+                                          "Feedback",
                                           style: TextStyle(
                                               color:
                                                   ThemeProvider.themeOf(context)
                                                       .data
                                                       .cardColor,
-                                              fontSize: 16,
+                                              fontSize: 20,
                                               fontWeight: FontWeight.w900),
                                         )))),
                               ],
@@ -655,250 +853,336 @@ class _ProfileState extends State<Profile> {
                   return Stack(
                     children: <Widget>[
                       MediumLoadingScreen(),
-                      Column(
-                        children: [
-                          Container(
-                            height: 31 + screenWidth * 0.15,
+                      Column(children: [
+                        Container(
+                          height: 31 + screenWidth * 0.15,
+                        ),
+                        Container(
+                          width: screenWidth * 0.9,
+                          child: Row(
+                            children: <Widget>[
+                              Spacer(),
+                              Text(
+                                'Account',
+                                style: TextStyle(
+                                    color: ThemeProvider.themeOf(context)
+                                        .data
+                                        .cardColor,
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.w900),
+                              ),
+                              Spacer(),
+                            ],
                           ),
-                          Container(
-                            width: screenWidth * 0.9,
-                            child: Row(
-                              children: <Widget>[
-                                Spacer(),
-                                Text(
-                                  'Account',
-                                  style: TextStyle(
+                        ),
+                        Container(height: screenWidth * 0.05),
+                        Container(
+                          height:
+                              screenHeight - 120 - 32 - (screenWidth * 0.40),
+                          width: screenWidth * 0.9,
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.all(0),
+                                  width: screenWidth * 0.9,
+                                  child: ToggleSwitch(
+                                    minWidth: screenWidth * 0.45 - 0.5,
+                                    minHeight: 50,
+                                    initialLabelIndex:
+                                        ThemeProvider.themeOf(context)
+                                                    .data
+                                                    .cardColor ==
+                                                Colors.black
+                                            ? 0
+                                            : 1,
+                                    activeFgColor:
+                                        ThemeProvider.themeOf(context)
+                                            .data
+                                            .cardColor,
+                                    inactiveBgColor:
+                                        ThemeProvider.themeOf(context)
+                                            .data
+                                            .accentColor,
+                                    inactiveFgColor:
+                                        ThemeProvider.themeOf(context)
+                                            .data
+                                            .cardColor,
+                                    labels: ['', ''],
+                                    icons: [
+                                      Icons.wb_sunny,
+                                      Icons.nightlight_round
+                                    ],
+                                    iconSize: 30.0,
+                                    activeBgColors: [
+                                      Color.fromRGBO(29, 161, 242, 1),
+                                      Color.fromRGBO(29, 161, 242, 1),
+                                    ],
+                                    onToggle: (index) {
+                                      print(ThemeProvider.themeOf(context)
+                                              .data
+                                              .cardColor ==
+                                          Colors.black);
+                                      print(ThemeProvider.themeOf(context)
+                                              .data
+                                              .cardColor ==
+                                          Colors.white);
+                                      print('switched to: $index');
+                                      if (index == 0) {
+                                        ThemeProvider.controllerOf(context)
+                                            .setTheme('lighted');
+                                      } else {
+                                        ThemeProvider.controllerOf(context)
+                                            .setTheme('darkened');
+                                      }
+                                      setState(() {});
+                                      setState(() {});
+                                    },
+                                  ),
+                                ),
+                                Container(height: 10),
+                                GestureDetector(
+                                  onTap: () {},
+                                  child: Container(
+                                    height: 50,
+                                    width: screenWidth * 0.9,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
                                       color: ThemeProvider.themeOf(context)
                                           .data
-                                          .cardColor,
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.w900),
+                                          .accentColor,
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        Container(width: screenWidth * 0.05),
+                                        Icon(Icons.language, size: 30),
+                                        Container(width: screenWidth * 0.05),
+                                        Text(
+                                          "Language",
+                                          style: TextStyle(
+                                              color:
+                                                  ThemeProvider.themeOf(context)
+                                                      .data
+                                                      .cardColor,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w900),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Container(height: 10),
+                                GestureDetector(
+                                  onTap: () {},
+                                  child: Container(
+                                    height: 50,
+                                    width: screenWidth * 0.9,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: ThemeProvider.themeOf(context)
+                                          .data
+                                          .accentColor,
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        Container(width: screenWidth * 0.05),
+                                        Icon(Icons.email, size: 30),
+                                        Container(width: screenWidth * 0.05),
+                                        Text(
+                                          "Email",
+                                          style: TextStyle(
+                                              color:
+                                                  ThemeProvider.themeOf(context)
+                                                      .data
+                                                      .cardColor,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w900),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Container(height: 10),
+                                GestureDetector(
+                                  onTap: () {},
+                                  child: Container(
+                                    height: 50,
+                                    width: screenWidth * 0.9,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: ThemeProvider.themeOf(context)
+                                          .data
+                                          .accentColor,
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        Container(width: screenWidth * 0.05),
+                                        Icon(Icons.lock, size: 30),
+                                        Container(width: screenWidth * 0.05),
+                                        Text(
+                                          "Password",
+                                          style: TextStyle(
+                                              color:
+                                                  ThemeProvider.themeOf(context)
+                                                      .data
+                                                      .cardColor,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w900),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Container(height: 10),
+                                GestureDetector(
+                                  onTap: () {},
+                                  child: Container(
+                                    height: 50,
+                                    width: screenWidth * 0.9,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: ThemeProvider.themeOf(context)
+                                          .data
+                                          .accentColor,
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        Container(width: screenWidth * 0.05),
+                                        Icon(Icons.payment_rounded, size: 30),
+                                        Container(width: screenWidth * 0.05),
+                                        Text(
+                                          "Subscription",
+                                          style: TextStyle(
+                                              color:
+                                                  ThemeProvider.themeOf(context)
+                                                      .data
+                                                      .cardColor,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w900),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Container(height: 10),
+                                GestureDetector(
+                                  onTap: () async {
+                                    getListOnce = true;
+                                    signUpController.text = '';
+                                    percentSignUpCompletion = 0.166666;
+                                    coverTextField = false;
+                                    whichMessageNumber = 0;
+                                    showSignUpScreen = false;
+                                    showLogIn = false;
+                                    submitSignUpColor =
+                                        Color.fromRGBO(175, 29, 242, 1);
+                                    await _auth.signOut();
+                                    musicClicked = true;
+                                    courseClicked = false;
+                                    profileClicked = false;
+                                    Phoenix.rebirth(context);
+                                  },
+                                  child: Container(
+                                    height: 50,
+                                    width: screenWidth * 0.9,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: ThemeProvider.themeOf(context)
+                                          .data
+                                          .accentColor,
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        Container(width: screenWidth * 0.05),
+                                        Icon(Icons.logout, size: 30),
+                                        Container(width: screenWidth * 0.05),
+                                        Text(
+                                          "Logout",
+                                          style: TextStyle(
+                                              color:
+                                                  ThemeProvider.themeOf(context)
+                                                      .data
+                                                      .cardColor,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w900),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Container(height: 10),
+                                GestureDetector(
+                                  onTap: () {},
+                                  child: Container(
+                                    height: 50,
+                                    width: screenWidth * 0.9,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: ThemeProvider.themeOf(context)
+                                          .data
+                                          .accentColor,
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        Container(width: screenWidth * 0.05),
+                                        Icon(Icons.policy, size: 30),
+                                        Container(width: screenWidth * 0.05),
+                                        Text(
+                                          "Privacy Policy",
+                                          style: TextStyle(
+                                              color:
+                                                  ThemeProvider.themeOf(context)
+                                                      .data
+                                                      .cardColor,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w900),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Container(height: 10),
+                                GestureDetector(
+                                  onTap: () {},
+                                  child: Container(
+                                    height: 50,
+                                    width: screenWidth * 0.9,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: ThemeProvider.themeOf(context)
+                                          .data
+                                          .accentColor,
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        Container(width: screenWidth * 0.05),
+                                        Icon(Icons.wysiwyg, size: 30),
+                                        Container(width: screenWidth * 0.05),
+                                        Text(
+                                          "Terms of Conditions",
+                                          style: TextStyle(
+                                              color:
+                                                  ThemeProvider.themeOf(context)
+                                                      .data
+                                                      .cardColor,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w900),
+                                        )
+                                      ],
+                                    ),
+                                  ),
                                 ),
                                 Spacer(),
+                                Container(height: screenWidth * 0.05),
+                                Container(
+                                    height: 40 +
+                                        (MediaQuery.of(context).size.width *
+                                            0.1)),
                               ],
                             ),
                           ),
-                          Container(height: screenWidth * 0.05),
-                          Container(
-                            padding: EdgeInsets.all(0),
-                            width: screenWidth * 0.9,
-                            child: ToggleSwitch(
-                              minWidth: screenWidth * 0.45 - 0.5,
-                              minHeight: 50,
-                              initialLabelIndex: ThemeProvider.themeOf(context)
-                                          .data
-                                          .cardColor ==
-                                      Colors.black
-                                  ? 0
-                                  : 1,
-                              activeFgColor:
-                                  ThemeProvider.themeOf(context).data.cardColor,
-                              inactiveBgColor: ThemeProvider.themeOf(context)
-                                  .data
-                                  .accentColor,
-                              inactiveFgColor:
-                                  ThemeProvider.themeOf(context).data.cardColor,
-                              labels: ['', ''],
-                              icons: [Icons.wb_sunny, Icons.nightlight_round],
-                              iconSize: 30.0,
-                              activeBgColors: [
-                                Color.fromRGBO(29, 161, 242, 1),
-                                Color.fromRGBO(29, 161, 242, 1),
-                              ],
-                              onToggle: (index) {
-                                print(ThemeProvider.themeOf(context)
-                                        .data
-                                        .cardColor ==
-                                    Colors.black);
-                                print(ThemeProvider.themeOf(context)
-                                        .data
-                                        .cardColor ==
-                                    Colors.white);
-                                print('switched to: $index');
-                                if (index == 0) {
-                                  ThemeProvider.controllerOf(context)
-                                      .setTheme('lighted');
-                                } else {
-                                  ThemeProvider.controllerOf(context)
-                                      .setTheme('darkened');
-                                }
-                                setState(() {});
-                                setState(() {});
-                              },
-                            ),
-                          ),
-                          Container(height: 10),
-                          GestureDetector(
-                            onTap: () {},
-                            child: Container(
-                              height: 50,
-                              width: screenWidth * 0.9,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: ThemeProvider.themeOf(context)
-                                    .data
-                                    .accentColor,
-                              ),
-                              child: Row(
-                                children: [
-                                  Container(width: screenWidth * 0.05),
-                                  Icon(Icons.language, size: 30),
-                                  Container(width: screenWidth * 0.05),
-                                  Text(
-                                    "Language",
-                                    style: TextStyle(
-                                        color: ThemeProvider.themeOf(context)
-                                            .data
-                                            .cardColor,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w900),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                          Container(height: 10),
-                          GestureDetector(
-                            onTap: () {},
-                            child: Container(
-                              height: 50,
-                              width: screenWidth * 0.9,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: ThemeProvider.themeOf(context)
-                                    .data
-                                    .accentColor,
-                              ),
-                              child: Row(
-                                children: [
-                                  Container(width: screenWidth * 0.05),
-                                  Icon(Icons.email, size: 30),
-                                  Container(width: screenWidth * 0.05),
-                                  Text(
-                                    "Email",
-                                    style: TextStyle(
-                                        color: ThemeProvider.themeOf(context)
-                                            .data
-                                            .cardColor,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w900),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                          Container(height: 10),
-                          GestureDetector(
-                            onTap: () {},
-                            child: Container(
-                              height: 50,
-                              width: screenWidth * 0.9,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: ThemeProvider.themeOf(context)
-                                    .data
-                                    .accentColor,
-                              ),
-                              child: Row(
-                                children: [
-                                  Container(width: screenWidth * 0.05),
-                                  Icon(Icons.lock, size: 30),
-                                  Container(width: screenWidth * 0.05),
-                                  Text(
-                                    "Password",
-                                    style: TextStyle(
-                                        color: ThemeProvider.themeOf(context)
-                                            .data
-                                            .cardColor,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w900),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                          Container(height: 10),
-                          GestureDetector(
-                            onTap: () {},
-                            child: Container(
-                              height: 50,
-                              width: screenWidth * 0.9,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: ThemeProvider.themeOf(context)
-                                    .data
-                                    .accentColor,
-                              ),
-                              child: Row(
-                                children: [
-                                  Container(width: screenWidth * 0.05),
-                                  Icon(Icons.payment_rounded, size: 30),
-                                  Container(width: screenWidth * 0.05),
-                                  Text(
-                                    "Subscription",
-                                    style: TextStyle(
-                                        color: ThemeProvider.themeOf(context)
-                                            .data
-                                            .cardColor,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w900),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                          Container(height: 10),
-                          GestureDetector(
-                            onTap: () async {
-                              getListOnce = true;
-                              signUpController.text = '';
-                              percentSignUpCompletion = 0.166666;
-                              coverTextField = false;
-                              whichMessageNumber = 0;
-                              showSignUpScreen = false;
-                              showLogIn = false;
-                              submitSignUpColor =
-                                  Color.fromRGBO(175, 29, 242, 1);
-                              await _auth.signOut();
-                              musicClicked = true;
-                              courseClicked = false;
-                              profileClicked = false;
-                              Phoenix.rebirth(context);
-                            },
-                            child: Container(
-                              height: 50,
-                              width: screenWidth * 0.9,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: ThemeProvider.themeOf(context)
-                                    .data
-                                    .accentColor,
-                              ),
-                              child: Row(
-                                children: [
-                                  Container(width: screenWidth * 0.05),
-                                  Icon(Icons.logout, size: 30),
-                                  Container(width: screenWidth * 0.05),
-                                  Text(
-                                    "Logout",
-                                    style: TextStyle(
-                                        color: ThemeProvider.themeOf(context)
-                                            .data
-                                            .cardColor,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w900),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                          Spacer(),
-                          Container(height: screenWidth * 0.05),
-                          Container(
-                              height: 40 +
-                                  (MediaQuery.of(context).size.width * 0.1)),
-                        ],
-                      ),
+                        ),
+                      ]),
                       Column(
                         children: [
                           Spacer(),
@@ -919,13 +1203,13 @@ class _ProfileState extends State<Profile> {
                                       width: screenWidth * (0.425),
                                       child: Center(
                                           child: Text(
-                                        "Privacy Policy",
+                                        "Share",
                                         style: TextStyle(
                                             color:
                                                 ThemeProvider.themeOf(context)
                                                     .data
                                                     .cardColor,
-                                            fontSize: 16,
+                                            fontSize: 20,
                                             fontWeight: FontWeight.w900),
                                       ))),
                                 ),
@@ -943,13 +1227,13 @@ class _ProfileState extends State<Profile> {
                                         height: 50,
                                         child: Center(
                                             child: Text(
-                                          "Terms and Conditions",
+                                          "Feedback",
                                           style: TextStyle(
                                               color:
                                                   ThemeProvider.themeOf(context)
                                                       .data
                                                       .cardColor,
-                                              fontSize: 16,
+                                              fontSize: 20,
                                               fontWeight: FontWeight.w900),
                                         )))),
                               ],

@@ -1,9 +1,3 @@
-// add the type the transaltion section after the video plays.
-// get shuffle to work in courses and trending and music its not working there either In music, if you shuffle and you've got stuff in collection thats not in dont show, then play it using the words that are stored in the collection.
-// vocabulary once you get a star within it, it shows a star progress
-// every five in translate you get that word progress update
-// sometimes the answers in matching doesnt wor idk why... this only happens when in music, new words are added to userData.words
-// check the lost streak stuff for dissapearing filled circles and maybe other problems
 // in settings select own language and show other userData that can change, show the terms of agreement and use docs and have a contact us page that opens up a send email with url launcher package and have links to the app's social media accounts and have an invite friends section that is shareable
 // Do the task the library wants you to do for youtube player flutter on ios to get it to work on ios and not just android.import '';
 // fix rules on firebase
