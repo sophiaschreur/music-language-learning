@@ -12,7 +12,6 @@ import 'package:provider/provider.dart';
 import 'check_streak_and_words.dart';
 import 'user.dart';
 import 'languageSelector.dart';
-import 'loading_screen.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
 class Profile extends StatefulWidget {
@@ -46,6 +45,7 @@ class _ProfileState extends State<Profile> {
                       Container(
                         padding: EdgeInsets.all(0),
                         width: screenWidth * 0.9,
+                        height: 50,
                         child: ToggleSwitch(
                           minWidth: screenWidth * 0.45 - 0.5,
                           minHeight: 50,
@@ -363,7 +363,6 @@ class _ProfileState extends State<Profile> {
                           } else {
                             return Stack(
                               children: <Widget>[
-                                MediumLoadingScreen(),
                                 Column(
                                   children: [
                                     Container(height: 31),
@@ -408,6 +407,7 @@ class _ProfileState extends State<Profile> {
                                             Container(
                                               padding: EdgeInsets.all(0),
                                               width: screenWidth * 0.9,
+                                              height: 50,
                                               child: ToggleSwitch(
                                                 minWidth:
                                                     screenWidth * 0.45 - 0.5,
@@ -852,13 +852,13 @@ class _ProfileState extends State<Profile> {
                 } else
                   return Stack(
                     children: <Widget>[
-                      MediumLoadingScreen(),
                       Column(children: [
                         Container(
                           height: 31 + screenWidth * 0.15,
                         ),
                         Container(
                           width: screenWidth * 0.9,
+                          height: 30,
                           child: Row(
                             children: <Widget>[
                               Spacer(),
@@ -886,6 +886,7 @@ class _ProfileState extends State<Profile> {
                                 Container(
                                   padding: EdgeInsets.all(0),
                                   width: screenWidth * 0.9,
+                                  height: 50,
                                   child: ToggleSwitch(
                                     minWidth: screenWidth * 0.45 - 0.5,
                                     minHeight: 50,
@@ -1172,12 +1173,6 @@ class _ProfileState extends State<Profile> {
                                     ),
                                   ),
                                 ),
-                                Spacer(),
-                                Container(height: screenWidth * 0.05),
-                                Container(
-                                    height: 40 +
-                                        (MediaQuery.of(context).size.width *
-                                            0.1)),
                               ],
                             ),
                           ),
