@@ -102,11 +102,7 @@ class _ProfileState extends State<Profile> {
                           child: Row(
                             children: [
                               Container(width: screenWidth * 0.05),
-                              IconButton(
-                                icon: Icon(Icons.language),
-                                iconSize: 30,
-                                onPressed: () async {},
-                              ),
+                              Icon(Icons.language, size: 30),
                               Container(width: screenWidth * 0.05),
                               Text(
                                 "Language",
@@ -135,11 +131,7 @@ class _ProfileState extends State<Profile> {
                           child: Row(
                             children: [
                               Container(width: screenWidth * 0.05),
-                              IconButton(
-                                icon: Icon(Icons.email),
-                                iconSize: 30,
-                                onPressed: () async {},
-                              ),
+                              Icon(Icons.email, size: 30),
                               Container(width: screenWidth * 0.05),
                               Text(
                                 "Email",
@@ -168,11 +160,7 @@ class _ProfileState extends State<Profile> {
                           child: Row(
                             children: [
                               Container(width: screenWidth * 0.05),
-                              IconButton(
-                                icon: Icon(Icons.lock),
-                                iconSize: 30,
-                                onPressed: () async {},
-                              ),
+                              Icon(Icons.lock, size: 30),
                               Container(width: screenWidth * 0.05),
                               Text(
                                 "Password",
@@ -201,11 +189,7 @@ class _ProfileState extends State<Profile> {
                           child: Row(
                             children: [
                               Container(width: screenWidth * 0.05),
-                              IconButton(
-                                icon: Icon(Icons.payment_rounded),
-                                iconSize: 30,
-                                onPressed: () async {},
-                              ),
+                              Icon(Icons.payment_rounded, size: 30),
                               Container(width: screenWidth * 0.05),
                               Text(
                                 "Subscription",
@@ -222,7 +206,21 @@ class _ProfileState extends State<Profile> {
                       ),
                       Container(height: 10),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () async {
+                          getListOnce = true;
+                          signUpController.text = '';
+                          percentSignUpCompletion = 0.166666;
+                          coverTextField = false;
+                          whichMessageNumber = 0;
+                          showSignUpScreen = false;
+                          showLogIn = false;
+                          submitSignUpColor = Color.fromRGBO(175, 29, 242, 1);
+                          await _auth.signOut();
+                          musicClicked = true;
+                          courseClicked = false;
+                          profileClicked = false;
+                          Phoenix.rebirth(context);
+                        },
                         child: Container(
                           height: 50,
                           width: screenWidth * 0.9,
@@ -234,26 +232,7 @@ class _ProfileState extends State<Profile> {
                           child: Row(
                             children: [
                               Container(width: screenWidth * 0.05),
-                              IconButton(
-                                icon: Icon(Icons.logout),
-                                iconSize: 30,
-                                onPressed: () async {
-                                  getListOnce = true;
-                                  signUpController.text = '';
-                                  percentSignUpCompletion = 0.166666;
-                                  coverTextField = false;
-                                  whichMessageNumber = 0;
-                                  showSignUpScreen = false;
-                                  showLogIn = false;
-                                  submitSignUpColor =
-                                      Color.fromRGBO(175, 29, 242, 1);
-                                  await _auth.signOut();
-                                  musicClicked = true;
-                                  courseClicked = false;
-                                  profileClicked = false;
-                                  Phoenix.rebirth(context);
-                                },
-                              ),
+                              Icon(Icons.logout, size: 30),
                               Container(width: screenWidth * 0.05),
                               Text(
                                 "Logout",
@@ -349,6 +328,250 @@ class _ProfileState extends State<Profile> {
                                           ),
                                           Spacer(),
                                         ],
+                                      ),
+                                    ),
+                                    Container(height: screenWidth * 0.05),
+                                    Container(
+                                      padding: EdgeInsets.all(0),
+                                      width: screenWidth * 0.9,
+                                      child: ToggleSwitch(
+                                        minWidth: screenWidth * 0.45 - 0.5,
+                                        minHeight: 50,
+                                        initialLabelIndex:
+                                            ThemeProvider.themeOf(context)
+                                                        .data
+                                                        .cardColor ==
+                                                    Colors.black
+                                                ? 0
+                                                : 1,
+                                        activeFgColor:
+                                            ThemeProvider.themeOf(context)
+                                                .data
+                                                .cardColor,
+                                        inactiveBgColor:
+                                            ThemeProvider.themeOf(context)
+                                                .data
+                                                .accentColor,
+                                        inactiveFgColor:
+                                            ThemeProvider.themeOf(context)
+                                                .data
+                                                .cardColor,
+                                        labels: ['', ''],
+                                        icons: [
+                                          Icons.wb_sunny,
+                                          Icons.nightlight_round
+                                        ],
+                                        iconSize: 30.0,
+                                        activeBgColors: [
+                                          Color.fromRGBO(29, 161, 242, 1),
+                                          Color.fromRGBO(29, 161, 242, 1),
+                                        ],
+                                        onToggle: (index) {
+                                          print(ThemeProvider.themeOf(context)
+                                                  .data
+                                                  .cardColor ==
+                                              Colors.black);
+                                          print(ThemeProvider.themeOf(context)
+                                                  .data
+                                                  .cardColor ==
+                                              Colors.white);
+                                          print('switched to: $index');
+                                          if (index == 0) {
+                                            ThemeProvider.controllerOf(context)
+                                                .setTheme('lighted');
+                                          } else {
+                                            ThemeProvider.controllerOf(context)
+                                                .setTheme('darkened');
+                                          }
+                                          setState(() {});
+                                          setState(() {});
+                                        },
+                                      ),
+                                    ),
+                                    Container(height: 10),
+                                    GestureDetector(
+                                      onTap: () {},
+                                      child: Container(
+                                        height: 50,
+                                        width: screenWidth * 0.9,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          color: ThemeProvider.themeOf(context)
+                                              .data
+                                              .accentColor,
+                                        ),
+                                        child: Row(
+                                          children: [
+                                            Container(
+                                                width: screenWidth * 0.05),
+                                            Icon(Icons.language, size: 30),
+                                            Container(
+                                                width: screenWidth * 0.05),
+                                            Text(
+                                              "Language",
+                                              style: TextStyle(
+                                                  color: ThemeProvider.themeOf(
+                                                          context)
+                                                      .data
+                                                      .cardColor,
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w900),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Container(height: 10),
+                                    GestureDetector(
+                                      onTap: () {},
+                                      child: Container(
+                                        height: 50,
+                                        width: screenWidth * 0.9,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          color: ThemeProvider.themeOf(context)
+                                              .data
+                                              .accentColor,
+                                        ),
+                                        child: Row(
+                                          children: [
+                                            Container(
+                                                width: screenWidth * 0.05),
+                                            Icon(Icons.email, size: 30),
+                                            Container(
+                                                width: screenWidth * 0.05),
+                                            Text(
+                                              "Email",
+                                              style: TextStyle(
+                                                  color: ThemeProvider.themeOf(
+                                                          context)
+                                                      .data
+                                                      .cardColor,
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w900),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Container(height: 10),
+                                    GestureDetector(
+                                      onTap: () {},
+                                      child: Container(
+                                        height: 50,
+                                        width: screenWidth * 0.9,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          color: ThemeProvider.themeOf(context)
+                                              .data
+                                              .accentColor,
+                                        ),
+                                        child: Row(
+                                          children: [
+                                            Container(
+                                                width: screenWidth * 0.05),
+                                            Icon(Icons.lock, size: 30),
+                                            Container(
+                                                width: screenWidth * 0.05),
+                                            Text(
+                                              "Password",
+                                              style: TextStyle(
+                                                  color: ThemeProvider.themeOf(
+                                                          context)
+                                                      .data
+                                                      .cardColor,
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w900),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Container(height: 10),
+                                    GestureDetector(
+                                      onTap: () {},
+                                      child: Container(
+                                        height: 50,
+                                        width: screenWidth * 0.9,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          color: ThemeProvider.themeOf(context)
+                                              .data
+                                              .accentColor,
+                                        ),
+                                        child: Row(
+                                          children: [
+                                            Container(
+                                                width: screenWidth * 0.05),
+                                            Icon(Icons.payment_rounded,
+                                                size: 30),
+                                            Container(
+                                                width: screenWidth * 0.05),
+                                            Text(
+                                              "Subscription",
+                                              style: TextStyle(
+                                                  color: ThemeProvider.themeOf(
+                                                          context)
+                                                      .data
+                                                      .cardColor,
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w900),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    Container(height: 10),
+                                    GestureDetector(
+                                      onTap: () async {
+                                        getListOnce = true;
+                                        signUpController.text = '';
+                                        percentSignUpCompletion = 0.166666;
+                                        coverTextField = false;
+                                        whichMessageNumber = 0;
+                                        showSignUpScreen = false;
+                                        showLogIn = false;
+                                        submitSignUpColor =
+                                            Color.fromRGBO(175, 29, 242, 1);
+                                        await _auth.signOut();
+                                        musicClicked = true;
+                                        courseClicked = false;
+                                        profileClicked = false;
+                                        Phoenix.rebirth(context);
+                                      },
+                                      child: Container(
+                                        height: 50,
+                                        width: screenWidth * 0.9,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          color: ThemeProvider.themeOf(context)
+                                              .data
+                                              .accentColor,
+                                        ),
+                                        child: Row(
+                                          children: [
+                                            Container(
+                                                width: screenWidth * 0.05),
+                                            Icon(Icons.logout, size: 30),
+                                            Container(
+                                                width: screenWidth * 0.05),
+                                            Text(
+                                              "Logout",
+                                              style: TextStyle(
+                                                  color: ThemeProvider.themeOf(
+                                                          context)
+                                                      .data
+                                                      .cardColor,
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w900),
+                                            )
+                                          ],
+                                        ),
                                       ),
                                     ),
                                     Spacer(),
@@ -455,28 +678,218 @@ class _ProfileState extends State<Profile> {
                               ],
                             ),
                           ),
-                          Spacer(),
-                          Center(
-                            child: FlatButton.icon(
-                              icon: Icon(Icons.person),
-                              label: Text(
-                                'logout',
-                              ),
-                              onPressed: () async {
-                                signUpController.text = '';
-                                percentSignUpCompletion = 0.166666;
-                                coverTextField = false;
-                                whichMessageNumber = 0;
-                                showSignUpScreen = false;
-                                showLogIn = false;
-                                submitSignUpColor =
-                                    Color.fromRGBO(175, 29, 242, 1);
-                                await _auth.signOut();
-                                musicClicked = true;
-                                courseClicked = false;
-                                profileClicked = false;
-                                Phoenix.rebirth(context);
+                          Container(height: screenWidth * 0.05),
+                          Container(
+                            padding: EdgeInsets.all(0),
+                            width: screenWidth * 0.9,
+                            child: ToggleSwitch(
+                              minWidth: screenWidth * 0.45 - 0.5,
+                              minHeight: 50,
+                              initialLabelIndex: ThemeProvider.themeOf(context)
+                                          .data
+                                          .cardColor ==
+                                      Colors.black
+                                  ? 0
+                                  : 1,
+                              activeFgColor:
+                                  ThemeProvider.themeOf(context).data.cardColor,
+                              inactiveBgColor: ThemeProvider.themeOf(context)
+                                  .data
+                                  .accentColor,
+                              inactiveFgColor:
+                                  ThemeProvider.themeOf(context).data.cardColor,
+                              labels: ['', ''],
+                              icons: [Icons.wb_sunny, Icons.nightlight_round],
+                              iconSize: 30.0,
+                              activeBgColors: [
+                                Color.fromRGBO(29, 161, 242, 1),
+                                Color.fromRGBO(29, 161, 242, 1),
+                              ],
+                              onToggle: (index) {
+                                print(ThemeProvider.themeOf(context)
+                                        .data
+                                        .cardColor ==
+                                    Colors.black);
+                                print(ThemeProvider.themeOf(context)
+                                        .data
+                                        .cardColor ==
+                                    Colors.white);
+                                print('switched to: $index');
+                                if (index == 0) {
+                                  ThemeProvider.controllerOf(context)
+                                      .setTheme('lighted');
+                                } else {
+                                  ThemeProvider.controllerOf(context)
+                                      .setTheme('darkened');
+                                }
+                                setState(() {});
+                                setState(() {});
                               },
+                            ),
+                          ),
+                          Container(height: 10),
+                          GestureDetector(
+                            onTap: () {},
+                            child: Container(
+                              height: 50,
+                              width: screenWidth * 0.9,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: ThemeProvider.themeOf(context)
+                                    .data
+                                    .accentColor,
+                              ),
+                              child: Row(
+                                children: [
+                                  Container(width: screenWidth * 0.05),
+                                  Icon(Icons.language, size: 30),
+                                  Container(width: screenWidth * 0.05),
+                                  Text(
+                                    "Language",
+                                    style: TextStyle(
+                                        color: ThemeProvider.themeOf(context)
+                                            .data
+                                            .cardColor,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w900),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          Container(height: 10),
+                          GestureDetector(
+                            onTap: () {},
+                            child: Container(
+                              height: 50,
+                              width: screenWidth * 0.9,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: ThemeProvider.themeOf(context)
+                                    .data
+                                    .accentColor,
+                              ),
+                              child: Row(
+                                children: [
+                                  Container(width: screenWidth * 0.05),
+                                  Icon(Icons.email, size: 30),
+                                  Container(width: screenWidth * 0.05),
+                                  Text(
+                                    "Email",
+                                    style: TextStyle(
+                                        color: ThemeProvider.themeOf(context)
+                                            .data
+                                            .cardColor,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w900),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          Container(height: 10),
+                          GestureDetector(
+                            onTap: () {},
+                            child: Container(
+                              height: 50,
+                              width: screenWidth * 0.9,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: ThemeProvider.themeOf(context)
+                                    .data
+                                    .accentColor,
+                              ),
+                              child: Row(
+                                children: [
+                                  Container(width: screenWidth * 0.05),
+                                  Icon(Icons.lock, size: 30),
+                                  Container(width: screenWidth * 0.05),
+                                  Text(
+                                    "Password",
+                                    style: TextStyle(
+                                        color: ThemeProvider.themeOf(context)
+                                            .data
+                                            .cardColor,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w900),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          Container(height: 10),
+                          GestureDetector(
+                            onTap: () {},
+                            child: Container(
+                              height: 50,
+                              width: screenWidth * 0.9,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: ThemeProvider.themeOf(context)
+                                    .data
+                                    .accentColor,
+                              ),
+                              child: Row(
+                                children: [
+                                  Container(width: screenWidth * 0.05),
+                                  Icon(Icons.payment_rounded, size: 30),
+                                  Container(width: screenWidth * 0.05),
+                                  Text(
+                                    "Subscription",
+                                    style: TextStyle(
+                                        color: ThemeProvider.themeOf(context)
+                                            .data
+                                            .cardColor,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w900),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          Container(height: 10),
+                          GestureDetector(
+                            onTap: () async {
+                              getListOnce = true;
+                              signUpController.text = '';
+                              percentSignUpCompletion = 0.166666;
+                              coverTextField = false;
+                              whichMessageNumber = 0;
+                              showSignUpScreen = false;
+                              showLogIn = false;
+                              submitSignUpColor =
+                                  Color.fromRGBO(175, 29, 242, 1);
+                              await _auth.signOut();
+                              musicClicked = true;
+                              courseClicked = false;
+                              profileClicked = false;
+                              Phoenix.rebirth(context);
+                            },
+                            child: Container(
+                              height: 50,
+                              width: screenWidth * 0.9,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: ThemeProvider.themeOf(context)
+                                    .data
+                                    .accentColor,
+                              ),
+                              child: Row(
+                                children: [
+                                  Container(width: screenWidth * 0.05),
+                                  Icon(Icons.logout, size: 30),
+                                  Container(width: screenWidth * 0.05),
+                                  Text(
+                                    "Logout",
+                                    style: TextStyle(
+                                        color: ThemeProvider.themeOf(context)
+                                            .data
+                                            .cardColor,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w900),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                           Spacer(),
@@ -486,6 +899,68 @@ class _ProfileState extends State<Profile> {
                                   (MediaQuery.of(context).size.width * 0.1)),
                         ],
                       ),
+                      Column(
+                        children: [
+                          Spacer(),
+                          Container(
+                            width: screenWidth * 0.9,
+                            height: 50,
+                            child: Row(
+                              children: [
+                                GestureDetector(
+                                  onTap: () {},
+                                  child: Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          color:
+                                              Color.fromRGBO(175, 29, 242, 1)),
+                                      height: 50,
+                                      width: screenWidth * (0.425),
+                                      child: Center(
+                                          child: Text(
+                                        "Privacy Policy",
+                                        style: TextStyle(
+                                            color:
+                                                ThemeProvider.themeOf(context)
+                                                    .data
+                                                    .cardColor,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w900),
+                                      ))),
+                                ),
+                                Spacer(),
+                                GestureDetector(
+                                    onTap: () {},
+                                    child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          color:
+                                              Color.fromRGBO(175, 29, 242, 1),
+                                        ),
+                                        width: screenWidth * (0.425),
+                                        height: 50,
+                                        child: Center(
+                                            child: Text(
+                                          "Terms and Conditions",
+                                          style: TextStyle(
+                                              color:
+                                                  ThemeProvider.themeOf(context)
+                                                      .data
+                                                      .cardColor,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w900),
+                                        )))),
+                              ],
+                            ),
+                          ),
+                          Container(height: screenWidth * 0.05),
+                          Container(
+                              height: 41 +
+                                  (MediaQuery.of(context).size.width * 0.1)),
+                        ],
+                      )
                     ],
                   );
               }),
