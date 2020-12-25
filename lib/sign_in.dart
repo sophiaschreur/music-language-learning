@@ -372,7 +372,7 @@ class _SignInState extends State<SignIn> {
                         width: MediaQuery.of(context).size.width,
                         child: Column(children: [
                           Spacer(),
-                          logo,
+                          Container(width: 200, child: logo),
                           Container(
                             height: MediaQuery.of(context).size.width * 0.05,
                           ),
