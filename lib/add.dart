@@ -19,7 +19,7 @@ import 'database_helper.dart';
 import 'icons.dart';
 import 'trending.dart';
 import 'write_quiz.dart';
-import 'payment_page.dart';
+// import 'payment_page.dart';
 import 'course.dart';
 
 var lyrics = '';
@@ -381,185 +381,221 @@ class _AddState extends State<Add> {
                             } else if (checkAddColor ==
                                     Color.fromRGBO(29, 161, 242, 1) &&
                                 goodToGo == true) {
-                              if (userData.paid == true ||
-                                  widget.whereTo == 'write_quiz') {
-                                if (urlText != '' && lyrics != '') {
-                                  setState(() {
-                                    loading = AddLoad();
-                                  });
+                              // if (userData.paid == true ||
+                              //     widget.whereTo == 'write_quiz') {
+                              if (urlText != '' && lyrics != '') {
+                                setState(() {
+                                  loading = AddLoad();
+                                });
+                              }
+
+                              if (widget.whereTo == 'add') {
+                                getRankedUniqueWords() async {
+                                  print('here');
+                                  print('wordsList');
+                                  String lyrix;
+                                  if (lyrics.contains('http')) {
+                                    lyrix = lyrics.substring(
+                                        0, (lyrics).indexOf('http'));
+                                  } else {
+                                    lyrix = lyrics;
+                                  }
+
+                                  lyrix = lyrix.replaceAll('.', ' ');
+                                  lyrix = lyrix.replaceAll('\n', " ");
+                                  lyrix = lyrix.replaceAll(',', ' ');
+                                  lyrix = lyrix.replaceAll('?', ' ');
+                                  lyrix = lyrix.replaceAll('!', ' ');
+                                  lyrix = lyrix.replaceAll('-', ' ');
+                                  lyrix = lyrix.replaceAll(':', ' ');
+                                  lyrix = lyrix.replaceAll('[', ' ');
+                                  lyrix = lyrix.replaceAll(']', ' ');
+                                  lyrix = lyrix.replaceAll('"', ' ');
+                                  lyrix = lyrix.replaceAll("'", ' ');
+                                  lyrix = lyrix.replaceAll("(", " ");
+                                  lyrix = lyrix.replaceAll(")", " ");
+                                  lyrix = lyrix.replaceAll("—", " ");
+                                  lyrix = lyrix.replaceAll("&", " ");
+                                  lyrix = lyrix.replaceAll("1", ' ');
+                                  lyrix = lyrix.replaceAll("2", ' ');
+                                  lyrix = lyrix.replaceAll("3", ' ');
+                                  lyrix = lyrix.replaceAll("4", ' ');
+                                  lyrix = lyrix.replaceAll("5", ' ');
+                                  lyrix = lyrix.replaceAll("6", ' ');
+                                  lyrix = lyrix.replaceAll("7", ' ');
+                                  lyrix = lyrix.replaceAll("8", ' ');
+                                  lyrix = lyrix.replaceAll("9", ' ');
+                                  lyrix = lyrix.replaceAll("0", ' ');
+                                  lyrix = lyrix.replaceAll("–", " ");
+
+                                  lyrix =
+                                      lyrix.replaceAll(RegExp(' {2,}'), ' ');
+                                  lyrix =
+                                      lyrix.replaceAll(RegExp(' {2,}'), ' ');
+                                  lyrix =
+                                      lyrix.replaceAll(RegExp(' {2,}'), ' ');
+                                  lyrix =
+                                      lyrix.replaceAll(RegExp(' {2,}'), ' ');
+                                  lyrix =
+                                      lyrix.replaceAll(RegExp(' {2,}'), ' ');
+                                  lyrix =
+                                      lyrix.replaceAll(RegExp(' {2,}'), ' ');
+                                  lyrix =
+                                      lyrix.replaceAll(RegExp(' {2,}'), ' ');
+                                  lyrix =
+                                      lyrix.replaceAll(RegExp(' {2,}'), ' ');
+                                  lyrix =
+                                      lyrix.replaceAll(RegExp(' {2,}'), ' ');
+                                  lyrix = lyrix.toLowerCase();
+                                  List words = lyrix.split(' ');
+                                  print(words);
+                                  List newWords = [];
+                                  var afterHTTP = false;
+
+                                  for (var k = 0; k < words.length - 1; k++) {
+                                    var getRidOfEmpty = words[k]
+                                        .replaceAll(RegExp(' {1,}'), '');
+                                    if (words[k].contains('http')) {
+                                      afterHTTP = true;
+                                    } else if (afterHTTP == false &&
+                                        getRidOfEmpty != '') {
+                                      newWords.add(words[k]);
+                                    }
+                                  }
+                                  var newLyrics = ' ';
+                                  for (var k in newWords) {
+                                    newLyrics = newLyrics + k + ' ';
+                                  }
+
+                                  var wordNCount = {};
+                                  for (var i = 0; i < newWords.length; i++) {
+                                    String search = newWords[i];
+                                    var value =
+                                        search.allMatches(newLyrics).length;
+                                    String key =
+                                        newWords[i].replaceAll(' ', '');
+                                    wordNCount[key] = value;
+                                  }
+
+                                  var sortedKeys = wordNCount.keys
+                                      .toList(growable: false)
+                                        ..sort((k1, k2) => wordNCount[k1]
+                                            .compareTo(wordNCount[k2]));
+                                  //   LinkedHashMap sortedMap =
+                                  //       new LinkedHashMap.fromIterable(
+                                  //     sortedKeys,
+                                  //     key: (k) => k,
+                                  //     value: (k) => wordNCount[k],
+                                  //   );
+                                  //   // rankedUniqueWords.sort((a, b) =>
+                                  //   //     a.toString().compareTo(b.toString()));
+                                  //   // print(rankedUniqueWords);
+                                  // }
+
+                                  String rankedString = '';
+                                  for (var i in sortedKeys) {
+                                    rankedString = rankedString + i + ' ';
+                                  }
+                                  rankedString = rankedString.replaceRange(
+                                      rankedString.length - 1,
+                                      rankedString.length,
+                                      '');
+                                  rankedUniqueWords = rankedString.split(' ');
+                                  return rankedString;
                                 }
 
-                                if (widget.whereTo == 'add') {
-                                  getRankedUniqueWords() async {
-                                    print('here');
-                                    print('wordsList');
-                                    String lyrix;
-                                    if (lyrics.contains('http')) {
-                                      lyrix = lyrics.substring(
-                                          0, (lyrics).indexOf('http'));
-                                    } else {
-                                      lyrix = lyrics;
-                                    }
+                                var rankedString = await getRankedUniqueWords();
 
-                                    lyrix = lyrix.replaceAll('.', ' ');
-                                    lyrix = lyrix.replaceAll('\n', " ");
-                                    lyrix = lyrix.replaceAll(',', ' ');
-                                    lyrix = lyrix.replaceAll('?', ' ');
-                                    lyrix = lyrix.replaceAll('!', ' ');
-                                    lyrix = lyrix.replaceAll('-', ' ');
-                                    lyrix = lyrix.replaceAll(':', ' ');
-                                    lyrix = lyrix.replaceAll('[', ' ');
-                                    lyrix = lyrix.replaceAll(']', ' ');
-                                    lyrix = lyrix.replaceAll('"', ' ');
-                                    lyrix = lyrix.replaceAll("'", ' ');
-                                    lyrix = lyrix.replaceAll("(", " ");
-                                    lyrix = lyrix.replaceAll(")", " ");
-                                    lyrix = lyrix.replaceAll("—", " ");
-                                    lyrix = lyrix.replaceAll("&", " ");
-                                    lyrix = lyrix.replaceAll("1", ' ');
-                                    lyrix = lyrix.replaceAll("2", ' ');
-                                    lyrix = lyrix.replaceAll("3", ' ');
-                                    lyrix = lyrix.replaceAll("4", ' ');
-                                    lyrix = lyrix.replaceAll("5", ' ');
-                                    lyrix = lyrix.replaceAll("6", ' ');
-                                    lyrix = lyrix.replaceAll("7", ' ');
-                                    lyrix = lyrix.replaceAll("8", ' ');
-                                    lyrix = lyrix.replaceAll("9", ' ');
-                                    lyrix = lyrix.replaceAll("0", ' ');
-                                    lyrix = lyrix.replaceAll("–", " ");
+                                var daTitle;
+                                var daAuthor;
+                                Future<void> getVideoInfo() async {
+                                  var yt = YoutubeExplode();
+                                  var video = await yt.videos.get(videoId);
 
-                                    lyrix =
-                                        lyrix.replaceAll(RegExp(' {2,}'), ' ');
-                                    lyrix =
-                                        lyrix.replaceAll(RegExp(' {2,}'), ' ');
-                                    lyrix =
-                                        lyrix.replaceAll(RegExp(' {2,}'), ' ');
-                                    lyrix =
-                                        lyrix.replaceAll(RegExp(' {2,}'), ' ');
-                                    lyrix =
-                                        lyrix.replaceAll(RegExp(' {2,}'), ' ');
-                                    lyrix =
-                                        lyrix.replaceAll(RegExp(' {2,}'), ' ');
-                                    lyrix =
-                                        lyrix.replaceAll(RegExp(' {2,}'), ' ');
-                                    lyrix =
-                                        lyrix.replaceAll(RegExp(' {2,}'), ' ');
-                                    lyrix =
-                                        lyrix.replaceAll(RegExp(' {2,}'), ' ');
-                                    lyrix = lyrix.toLowerCase();
-                                    List words = lyrix.split(' ');
-                                    print(words);
-                                    List newWords = [];
-                                    var afterHTTP = false;
-
-                                    for (var k = 0; k < words.length - 1; k++) {
-                                      var getRidOfEmpty = words[k]
-                                          .replaceAll(RegExp(' {1,}'), '');
-                                      if (words[k].contains('http')) {
-                                        afterHTTP = true;
-                                      } else if (afterHTTP == false &&
-                                          getRidOfEmpty != '') {
-                                        newWords.add(words[k]);
-                                      }
-                                    }
-                                    var newLyrics = ' ';
-                                    for (var k in newWords) {
-                                      newLyrics = newLyrics + k + ' ';
-                                    }
-
-                                    var wordNCount = {};
-                                    for (var i = 0; i < newWords.length; i++) {
-                                      String search = newWords[i];
-                                      var value =
-                                          search.allMatches(newLyrics).length;
-                                      String key =
-                                          newWords[i].replaceAll(' ', '');
-                                      wordNCount[key] = value;
-                                    }
-
-                                    var sortedKeys = wordNCount.keys
-                                        .toList(growable: false)
-                                          ..sort((k1, k2) => wordNCount[k1]
-                                              .compareTo(wordNCount[k2]));
-                                    //   LinkedHashMap sortedMap =
-                                    //       new LinkedHashMap.fromIterable(
-                                    //     sortedKeys,
-                                    //     key: (k) => k,
-                                    //     value: (k) => wordNCount[k],
-                                    //   );
-                                    //   // rankedUniqueWords.sort((a, b) =>
-                                    //   //     a.toString().compareTo(b.toString()));
-                                    //   // print(rankedUniqueWords);
-                                    // }
-
-                                    String rankedString = '';
-                                    for (var i in sortedKeys) {
-                                      rankedString = rankedString + i + ' ';
-                                    }
-                                    rankedString = rankedString.replaceRange(
-                                        rankedString.length - 1,
-                                        rankedString.length,
-                                        '');
-                                    rankedUniqueWords = rankedString.split(' ');
-                                    return rankedString;
-                                  }
-
-                                  var rankedString =
-                                      await getRankedUniqueWords();
-
-                                  var daTitle;
-                                  var daAuthor;
-                                  Future<void> getVideoInfo() async {
-                                    var yt = YoutubeExplode();
-                                    var video = await yt.videos.get(videoId);
-
-                                    daTitle = video.title;
-                                    print(daTitle);
-
-                                    daAuthor = video.author;
-                                    print(daAuthor);
-                                    yt.close();
-                                  }
-
-                                  await getVideoInfo();
-                                  await saveSong(
-                                      videoId, lyrics, daAuthor, daTitle);
-                                  List newWordsList = rankedUniqueWords;
-                                  newWordsList = newWordsList.toSet().toList();
-
-                                  getInitialScore(videoId) {
-                                    int score = 0;
-                                    for (var k in newWordsList) {
-                                      if (userData.words.keys
-                                          .toList()
-                                          .contains(k)) {
-                                        if (userData.words[k][0] < 9) {
-                                          score = score + userData.words[k][0];
-                                        } else {
-                                          score = score + 9;
-                                        }
-                                      }
-                                    }
-                                    return score;
-                                  }
-
-                                  print('newWordsList');
-                                  print(newWordsList);
-                                  print('daAuthorandTitle');
-                                  print(daAuthor);
+                                  daTitle = video.title;
                                   print(daTitle);
-                                  (userData.collection)[videoId] = [
-                                    '',
-                                    daAuthor,
-                                    daTitle,
-                                    getInitialScore(videoId),
-                                    newWordsList.length * 9,
-                                    {},
-                                    userData.languages[0],
-                                    rankedString
-                                  ];
 
-                                  print(userData.collection);
+                                  daAuthor = video.author;
+                                  print(daAuthor);
+                                  yt.close();
+                                }
+
+                                await getVideoInfo();
+                                await saveSong(
+                                    videoId, lyrics, daAuthor, daTitle);
+                                List newWordsList = rankedUniqueWords;
+                                newWordsList = newWordsList.toSet().toList();
+
+                                getInitialScore(videoId) {
+                                  int score = 0;
+                                  for (var k in newWordsList) {
+                                    if (userData.words.keys
+                                        .toList()
+                                        .contains(k)) {
+                                      if (userData.words[k][0] < 9) {
+                                        score = score + userData.words[k][0];
+                                      } else {
+                                        score = score + 9;
+                                      }
+                                    }
+                                  }
+                                  return score;
+                                }
+
+                                print('newWordsList');
+                                print(newWordsList);
+                                print('daAuthorandTitle');
+                                print(daAuthor);
+                                print(daTitle);
+                                (userData.collection)[videoId] = [
+                                  '',
+                                  daAuthor,
+                                  daTitle,
+                                  getInitialScore(videoId),
+                                  newWordsList.length * 9,
+                                  {},
+                                  userData.languages[0],
+                                  rankedString
+                                ];
+
+                                print(userData.collection);
+
+                                await FireDatabaseService(uid: user.uid)
+                                    .updateUserData(
+                                        userData.username,
+                                        userData.email,
+                                        userData.languages,
+                                        userData.words,
+                                        userData.collection,
+                                        userData.totalWords,
+                                        userData.totalScore,
+                                        userData.streaks,
+                                        userData.dontShow,
+                                        userData.paid,
+                                        userData.coursePercents);
+
+                                urlDaWords = urlText;
+
+                                urlText = '';
+                                lyrics = '';
+                                rankedUniqueWords.clear();
+                                video = Container();
+
+                                checkAddColor = Color.fromRGBO(175, 29, 242, 1);
+
+                                lyricsGood = false;
+                                goodToGo = false;
+                                setState(() {
+                                  loading = Container();
+                                });
+                                if (userData.dontShow.contains(videoId)) {
+                                  List donotshow = userData.dontShow;
+                                  List dontShow;
+                                  if (userData.dontShow.contains(videoId)) {
+                                    donotshow.removeWhere(
+                                        (element) => element == videoId);
+                                  }
+                                  dontShow = donotshow;
 
                                   await FireDatabaseService(uid: user.uid)
                                       .updateUserData(
@@ -571,7 +607,7 @@ class _AddState extends State<Add> {
                                           userData.totalWords,
                                           userData.totalScore,
                                           userData.streaks,
-                                          userData.dontShow,
+                                          dontShow,
                                           userData.paid,
                                           userData.coursePercents);
 
@@ -590,100 +626,32 @@ class _AddState extends State<Add> {
                                   setState(() {
                                     loading = Container();
                                   });
-                                  if (userData.dontShow.contains(videoId)) {
-                                    List donotshow = userData.dontShow;
-                                    List dontShow;
-                                    if (userData.dontShow.contains(videoId)) {
-                                      donotshow.removeWhere(
-                                          (element) => element == videoId);
-                                    }
-                                    dontShow = donotshow;
+                                }
+                              }
 
-                                    await FireDatabaseService(uid: user.uid)
-                                        .updateUserData(
-                                            userData.username,
-                                            userData.email,
-                                            userData.languages,
-                                            userData.words,
-                                            userData.collection,
-                                            userData.totalWords,
-                                            userData.totalScore,
-                                            userData.streaks,
-                                            dontShow,
-                                            userData.paid,
-                                            userData.coursePercents);
+                              if (widget.whereTo == 'write_quiz') {
+                                holders.clear();
+                                print('write quiz');
+                                var daTitle;
+                                var daAuthor;
+                                Future<void> getVideoInfo() async {
+                                  var yt = YoutubeExplode();
+                                  var video = await yt.videos.get(videoId);
 
-                                    urlDaWords = urlText;
+                                  daTitle = video.title;
+                                  print(daTitle);
 
-                                    urlText = '';
-                                    lyrics = '';
-                                    rankedUniqueWords.clear();
-                                    video = Container();
-
-                                    checkAddColor =
-                                        Color.fromRGBO(175, 29, 242, 1);
-
-                                    lyricsGood = false;
-                                    goodToGo = false;
-                                    setState(() {
-                                      loading = Container();
-                                    });
-                                  }
+                                  daAuthor = video.author;
+                                  print(daAuthor);
+                                  yt.close();
                                 }
 
-                                if (widget.whereTo == 'write_quiz') {
-                                  holders.clear();
-                                  print('write quiz');
-                                  var daTitle;
-                                  var daAuthor;
-                                  Future<void> getVideoInfo() async {
-                                    var yt = YoutubeExplode();
-                                    var video = await yt.videos.get(videoId);
-
-                                    daTitle = video.title;
-                                    print(daTitle);
-
-                                    daAuthor = video.author;
-                                    print(daAuthor);
-                                    yt.close();
-                                  }
-
-                                  await getVideoInfo();
-                                  await saveSong(
-                                      videoId, lyrics, daAuthor, daTitle);
-                                  textAndTrans.clear();
-                                  textLines.clear();
-                                  getTheLyricsOnce = true;
-                                  Navigator.pushReplacement(
-                                      context,
-                                      PageRouteBuilder(
-                                        pageBuilder: (
-                                          context,
-                                          a1,
-                                          a2,
-                                        ) =>
-                                            WriteQuiz(widget.videoId,
-                                                widget.whereFrom),
-                                        transitionDuration:
-                                            Duration(seconds: 0),
-                                      ));
-                                  urlDaWords = urlText;
-
-                                  urlText = '';
-                                  lyrics = '';
-                                  rankedUniqueWords.clear();
-                                  video = Container();
-
-                                  checkAddColor =
-                                      Color.fromRGBO(175, 29, 242, 1);
-
-                                  lyricsGood = false;
-                                  goodToGo = false;
-                                  print('go to write quiz');
-                                }
-                              } else {
-                                // go to payment page
-
+                                await getVideoInfo();
+                                await saveSong(
+                                    videoId, lyrics, daAuthor, daTitle);
+                                textAndTrans.clear();
+                                textLines.clear();
+                                getTheLyricsOnce = true;
                                 Navigator.pushReplacement(
                                     context,
                                     PageRouteBuilder(
@@ -692,10 +660,38 @@ class _AddState extends State<Add> {
                                         a1,
                                         a2,
                                       ) =>
-                                          PaymentPage(),
+                                          WriteQuiz(
+                                              widget.videoId, widget.whereFrom),
                                       transitionDuration: Duration(seconds: 0),
                                     ));
+                                urlDaWords = urlText;
+
+                                urlText = '';
+                                lyrics = '';
+                                rankedUniqueWords.clear();
+                                video = Container();
+
+                                checkAddColor = Color.fromRGBO(175, 29, 242, 1);
+
+                                lyricsGood = false;
+                                goodToGo = false;
+                                print('go to write quiz');
                               }
+                              // } else {
+                              //   // go to payment page
+
+                              //   Navigator.pushReplacement(
+                              //       context,
+                              //       PageRouteBuilder(
+                              //         pageBuilder: (
+                              //           context,
+                              //           a1,
+                              //           a2,
+                              //         ) =>
+                              //             PaymentPage(),
+                              //         transitionDuration: Duration(seconds: 0),
+                              //       ));
+                              // }
                             }
                           },
                         ),

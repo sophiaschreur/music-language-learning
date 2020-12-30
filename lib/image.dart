@@ -3,7 +3,7 @@ import 'dive.dart';
 import 'main.dart';
 import 'package:theme_provider/theme_provider.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-import 'payment_page.dart';
+// import 'payment_page.dart';
 
 class Imaged extends StatefulWidget {
   final Widget theePic;
@@ -43,41 +43,41 @@ class _ImagedState extends State<Imaged> {
 
     return GestureDetector(
       onTap: () {
-        if (widget.goodToGo == 'paid') {
-          print('widget.videoId');
-          print(widget.videoId);
-          Navigator.pushReplacement(
-              context,
-              PageRouteBuilder(
-                  pageBuilder: (
-                    context,
-                    a1,
-                    a2,
-                  ) =>
-                      Dive(
-                        widget.videoId,
-                        widget.fromWhere,
-                      ),
-                  transitionDuration: Duration(
-                    seconds: 0,
-                  )));
-        } else {
-          //
-
-          Navigator.pushReplacement(
-              context,
-              PageRouteBuilder(
+        // if (widget.goodToGo == 'paid') {
+        print('widget.videoId');
+        print(widget.videoId);
+        Navigator.pushReplacement(
+            context,
+            PageRouteBuilder(
                 pageBuilder: (
                   context,
                   a1,
                   a2,
                 ) =>
-                    PaymentPage(),
-                transitionDuration: Duration(seconds: 0),
-              ));
+                    Dive(
+                      widget.videoId,
+                      widget.fromWhere,
+                    ),
+                transitionDuration: Duration(
+                  seconds: 0,
+                )));
+        // } else {
+        //   //
 
-          // go to the pricing page
-        }
+        //   Navigator.pushReplacement(
+        //       context,
+        //       PageRouteBuilder(
+        //         pageBuilder: (
+        //           context,
+        //           a1,
+        //           a2,
+        //         ) =>
+        //             PaymentPage(),
+        //         transitionDuration: Duration(seconds: 0),
+        //       ));
+
+        //   // go to the pricing page
+        // }
       },
       child: Container(
         child: Stack(

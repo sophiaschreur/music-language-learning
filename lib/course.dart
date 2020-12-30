@@ -17,7 +17,7 @@ import 'write_quiz.dart';
 import 'database_helper.dart';
 import 'add.dart';
 import 'languageSelector.dart';
-import 'payment_page.dart';
+// import 'payment_page.dart';
 
 List addToList = [];
 var stopCourseReloading = true;
@@ -113,8 +113,7 @@ class _CourseState extends State<Course> {
                                     showLock
                                         ? Center(
                                             child: Icon(Icons.lock,
-                                                size: 30,
-                                                color: Colors.white))
+                                                size: 30, color: Colors.white))
                                         : Container()
                                   ]));
                               Widget imageWidget = Imaged(
@@ -164,23 +163,22 @@ class _CourseState extends State<Course> {
                                     showLock
                                         ? Center(
                                             child: Icon(Icons.lock,
-                                                size: 30,
-                                                color: Colors.white),
+                                                size: 30, color: Colors.white),
                                           )
                                         : Container()
                                   ]));
                               Widget imageWidget = Imaged(
-                                  theePic,
-                                  i,
-                                  (userData.coursePercents[i][0] + 1) /
-                                      (userData.coursePercents[i][1] + 1),
-                                  languageData.songInfo[i][0],
-                                  languageData.songInfo[i][1],
-                                  'course',
-                                  showLock ? '': 'paid',
-                                  // userData.collection[i][3] /
-                                  //     userData.collection[i][4],
-                                  );
+                                theePic,
+                                i,
+                                (userData.coursePercents[i][0] + 1) /
+                                    (userData.coursePercents[i][1] + 1),
+                                languageData.songInfo[i][0],
+                                languageData.songInfo[i][1],
+                                'course',
+                                showLock ? '' : 'paid',
+                                // userData.collection[i][3] /
+                                //     userData.collection[i][4],
+                              );
 
                               funNewList.add(imageWidget);
                             } catch (e) {
@@ -278,16 +276,38 @@ class _CourseState extends State<Course> {
                                     print(direction);
                                     if (direction ==
                                         DismissDirection.endToStart) {
-                                      if (i < 2) {
-                                        var db = DatabaseHelper();
+                                      // if (i < 2) {
+                                      var db = DatabaseHelper();
 
-                                        if (await db.getLyricsFromVideoID(
-                                                fullUrlList[i]) ==
-                                            '') {
-                                          urlText = languageData
-                                              .fullCourse[fullUrlList[i]];
-                                          print('4');
-                                          Navigator.pushReplacement(
+                                      if (await db.getLyricsFromVideoID(
+                                              fullUrlList[i]) ==
+                                          '') {
+                                        urlText = languageData
+                                            .fullCourse[fullUrlList[i]];
+                                        print('4');
+                                        Navigator.pushReplacement(
+                                          context,
+                                          PageRouteBuilder(
+                                            pageBuilder: (
+                                              context,
+                                              a1,
+                                              a2,
+                                            ) =>
+                                                Add(urlText, fullUrlList[i],
+                                                    'write_quiz', 'course'),
+                                            transitionDuration: Duration(
+                                              seconds: 0,
+                                            ),
+                                          ),
+                                        );
+                                        setState(() {});
+                                        return Future<bool>.value(false);
+                                      } else {
+                                        holders.clear();
+                                        textAndTrans.clear();
+                                        textLines.clear();
+                                        getTheLyricsOnce = true;
+                                        Navigator.pushReplacement(
                                             context,
                                             PageRouteBuilder(
                                               pageBuilder: (
@@ -295,53 +315,31 @@ class _CourseState extends State<Course> {
                                                 a1,
                                                 a2,
                                               ) =>
-                                                  Add(urlText, fullUrlList[i],
-                                                      'write_quiz', 'course'),
-                                              transitionDuration: Duration(
-                                                seconds: 0,
-                                              ),
-                                            ),
-                                          );
-                                          setState(() {});
-                                          return Future<bool>.value(false);
-                                        } else {
-                                          holders.clear();
-                                          textAndTrans.clear();
-                                          textLines.clear();
-                                          getTheLyricsOnce = true;
-                                          Navigator.pushReplacement(
-                                              context,
-                                              PageRouteBuilder(
-                                                pageBuilder: (
-                                                  context,
-                                                  a1,
-                                                  a2,
-                                                ) =>
-                                                    WriteQuiz(funUrlList[i],
-                                                        'course'),
-                                                transitionDuration:
-                                                    Duration(seconds: 0),
-                                              ));
+                                                  WriteQuiz(
+                                                      funUrlList[i], 'course'),
+                                              transitionDuration:
+                                                  Duration(seconds: 0),
+                                            ));
 
-                                          print('go to write quiz');
-                                          return Future<bool>.value(false);
-                                        }
-                                      } else {
-// go to paid
-Navigator.pushReplacement(
-                                      context,
-                                      PageRouteBuilder(
-                                        pageBuilder: (
-                                          context,
-                                          a1,
-                                          a2,
-                                        ) =>
-                                            PaymentPage(),
-                                        transitionDuration:
-                                            Duration(seconds: 0),
-                                      ));
+                                        print('go to write quiz');
                                         return Future<bool>.value(false);
                                       }
+//                                       } else {
+// // go to paid
+//                                         Navigator.pushReplacement(
+//                                             context,
+//                                             PageRouteBuilder(
+//                                               pageBuilder: (
+//                                                 context,
+//                                                 a1,
+//                                                 a2,
+//                                               ) =>
+//                                                   PaymentPage(),
+//                                               transitionDuration:
+//                                                   Duration(seconds: 0),
+//                                             ));
+//                                         return Future<bool>.value(false);
+//                                       }
                                     } else {
                                       if (userData.paid == true) {
                                         print('add to user.Collection');
@@ -424,16 +422,38 @@ Navigator.pushReplacement(
                                     print(direction);
                                     if (direction ==
                                         DismissDirection.endToStart) {
-                                      if (i < 2) {
-                                        var db = DatabaseHelper();
+                                      // if (i < 2) {
+                                      var db = DatabaseHelper();
 
-                                        if (await db.getLyricsFromVideoID(
-                                                fullUrlList[i]) ==
-                                            '') {
-                                          urlText = languageData
-                                              .fullCourse[fullUrlList[i]];
-                                          print('4');
-                                          Navigator.pushReplacement(
+                                      if (await db.getLyricsFromVideoID(
+                                              fullUrlList[i]) ==
+                                          '') {
+                                        urlText = languageData
+                                            .fullCourse[fullUrlList[i]];
+                                        print('4');
+                                        Navigator.pushReplacement(
+                                          context,
+                                          PageRouteBuilder(
+                                            pageBuilder: (
+                                              context,
+                                              a1,
+                                              a2,
+                                            ) =>
+                                                Add(urlText, fullUrlList[i],
+                                                    'write_quiz', 'course'),
+                                            transitionDuration: Duration(
+                                              seconds: 0,
+                                            ),
+                                          ),
+                                        );
+                                        setState(() {});
+                                        return Future<bool>.value(false);
+                                      } else {
+                                        holders.clear();
+                                        textAndTrans.clear();
+                                        textLines.clear();
+                                        getTheLyricsOnce = true;
+                                        Navigator.pushReplacement(
                                             context,
                                             PageRouteBuilder(
                                               pageBuilder: (
@@ -441,53 +461,31 @@ Navigator.pushReplacement(
                                                 a1,
                                                 a2,
                                               ) =>
-                                                  Add(urlText, fullUrlList[i],
-                                                      'write_quiz', 'course'),
-                                              transitionDuration: Duration(
-                                                seconds: 0,
-                                              ),
-                                            ),
-                                          );
-                                          setState(() {});
-                                          return Future<bool>.value(false);
-                                        } else {
-                                          holders.clear();
-                                          textAndTrans.clear();
-                                          textLines.clear();
-                                          getTheLyricsOnce = true;
-                                          Navigator.pushReplacement(
-                                              context,
-                                              PageRouteBuilder(
-                                                pageBuilder: (
-                                                  context,
-                                                  a1,
-                                                  a2,
-                                                ) =>
-                                                    WriteQuiz(fullUrlList[i],
-                                                        'course'),
-                                                transitionDuration:
-                                                    Duration(seconds: 0),
-                                              ));
+                                                  WriteQuiz(
+                                                      fullUrlList[i], 'course'),
+                                              transitionDuration:
+                                                  Duration(seconds: 0),
+                                            ));
 
-                                          print('go to write quiz');
-                                          return Future<bool>.value(false);
-                                        }
-                                      } else {
-// go to paid
-Navigator.pushReplacement(
-                                      context,
-                                      PageRouteBuilder(
-                                        pageBuilder: (
-                                          context,
-                                          a1,
-                                          a2,
-                                        ) =>
-                                            PaymentPage(),
-                                        transitionDuration:
-                                            Duration(seconds: 0),
-                                      ));
+                                        print('go to write quiz');
                                         return Future<bool>.value(false);
                                       }
+//                                       } else {
+// // go to paid
+//                                         Navigator.pushReplacement(
+//                                             context,
+//                                             PageRouteBuilder(
+//                                               pageBuilder: (
+//                                                 context,
+//                                                 a1,
+//                                                 a2,
+//                                               ) =>
+//                                                   PaymentPage(),
+//                                               transitionDuration:
+//                                                   Duration(seconds: 0),
+//                                             ));
+//                                         return Future<bool>.value(false);
+//                                       }
                                     } else {
                                       if (userData.paid == true) {
                                         print('add to user.Collection');
@@ -597,16 +595,38 @@ Navigator.pushReplacement(
                                     print(direction);
                                     if (direction ==
                                         DismissDirection.endToStart) {
-                                      if (i < 2) {
-                                        var db = DatabaseHelper();
+                                      // if (i < 2) {
+                                      var db = DatabaseHelper();
 
-                                        if (await db.getLyricsFromVideoID(
-                                                funUrlList[i]) ==
-                                            '') {
-                                          urlText = languageData
-                                              .funCourse[funUrlList[i]];
-                                          print('4');
-                                          Navigator.pushReplacement(
+                                      if (await db.getLyricsFromVideoID(
+                                              funUrlList[i]) ==
+                                          '') {
+                                        urlText = languageData
+                                            .funCourse[funUrlList[i]];
+                                        print('4');
+                                        Navigator.pushReplacement(
+                                          context,
+                                          PageRouteBuilder(
+                                            pageBuilder: (
+                                              context,
+                                              a1,
+                                              a2,
+                                            ) =>
+                                                Add(urlText, funUrlList[i],
+                                                    'write_quiz', 'course'),
+                                            transitionDuration: Duration(
+                                              seconds: 0,
+                                            ),
+                                          ),
+                                        );
+                                        setState(() {});
+                                        return Future<bool>.value(false);
+                                      } else {
+                                        holders.clear();
+                                        textAndTrans.clear();
+                                        textLines.clear();
+                                        getTheLyricsOnce = true;
+                                        Navigator.pushReplacement(
                                             context,
                                             PageRouteBuilder(
                                               pageBuilder: (
@@ -614,53 +634,31 @@ Navigator.pushReplacement(
                                                 a1,
                                                 a2,
                                               ) =>
-                                                  Add(urlText, funUrlList[i],
-                                                      'write_quiz', 'course'),
-                                              transitionDuration: Duration(
-                                                seconds: 0,
-                                              ),
-                                            ),
-                                          );
-                                          setState(() {});
-                                          return Future<bool>.value(false);
-                                        } else {
-                                          holders.clear();
-                                          textAndTrans.clear();
-                                          textLines.clear();
-                                          getTheLyricsOnce = true;
-                                          Navigator.pushReplacement(
-                                              context,
-                                              PageRouteBuilder(
-                                                pageBuilder: (
-                                                  context,
-                                                  a1,
-                                                  a2,
-                                                ) =>
-                                                    WriteQuiz(funUrlList[i],
-                                                        'course'),
-                                                transitionDuration:
-                                                    Duration(seconds: 0),
-                                              ));
+                                                  WriteQuiz(
+                                                      funUrlList[i], 'course'),
+                                              transitionDuration:
+                                                  Duration(seconds: 0),
+                                            ));
 
-                                          print('go to write quiz');
-                                          return Future<bool>.value(false);
-                                        }
-                                      } else {
-// go to paid
-Navigator.pushReplacement(
-                                      context,
-                                      PageRouteBuilder(
-                                        pageBuilder: (
-                                          context,
-                                          a1,
-                                          a2,
-                                        ) =>
-                                            PaymentPage(),
-                                        transitionDuration:
-                                            Duration(seconds: 0),
-                                      ));
+                                        print('go to write quiz');
                                         return Future<bool>.value(false);
                                       }
+//                                       } else {
+// // go to paid
+//                                         Navigator.pushReplacement(
+//                                             context,
+//                                             PageRouteBuilder(
+//                                               pageBuilder: (
+//                                                 context,
+//                                                 a1,
+//                                                 a2,
+//                                               ) =>
+//                                                   PaymentPage(),
+//                                               transitionDuration:
+//                                                   Duration(seconds: 0),
+//                                             ));
+//                                         return Future<bool>.value(false);
+//                                       }
                                     } else {
                                       if (userData.paid == true) {
                                         print('add to user.Collection');
@@ -744,16 +742,38 @@ Navigator.pushReplacement(
                                     print(direction);
                                     if (direction ==
                                         DismissDirection.endToStart) {
-                                      if (i < 2) {
-                                        var db = DatabaseHelper();
+                                      // if (i < 2) {
+                                      var db = DatabaseHelper();
 
-                                        if (await db.getLyricsFromVideoID(
-                                                funUrlList[i]) ==
-                                            '') {
-                                          urlText = languageData
-                                              .funCourse[funUrlList[i]];
-                                          print('4');
-                                          Navigator.pushReplacement(
+                                      if (await db.getLyricsFromVideoID(
+                                              funUrlList[i]) ==
+                                          '') {
+                                        urlText = languageData
+                                            .funCourse[funUrlList[i]];
+                                        print('4');
+                                        Navigator.pushReplacement(
+                                          context,
+                                          PageRouteBuilder(
+                                            pageBuilder: (
+                                              context,
+                                              a1,
+                                              a2,
+                                            ) =>
+                                                Add(urlText, funUrlList[i],
+                                                    'write_quiz', 'course'),
+                                            transitionDuration: Duration(
+                                              seconds: 0,
+                                            ),
+                                          ),
+                                        );
+                                        setState(() {});
+                                        return Future<bool>.value(false);
+                                      } else {
+                                        holders.clear();
+                                        textAndTrans.clear();
+                                        textLines.clear();
+                                        getTheLyricsOnce = true;
+                                        Navigator.pushReplacement(
                                             context,
                                             PageRouteBuilder(
                                               pageBuilder: (
@@ -761,53 +781,31 @@ Navigator.pushReplacement(
                                                 a1,
                                                 a2,
                                               ) =>
-                                                  Add(urlText, funUrlList[i],
-                                                      'write_quiz', 'course'),
-                                              transitionDuration: Duration(
-                                                seconds: 0,
-                                              ),
-                                            ),
-                                          );
-                                          setState(() {});
-                                          return Future<bool>.value(false);
-                                        } else {
-                                          holders.clear();
-                                          textAndTrans.clear();
-                                          textLines.clear();
-                                          getTheLyricsOnce = true;
-                                          Navigator.pushReplacement(
-                                              context,
-                                              PageRouteBuilder(
-                                                pageBuilder: (
-                                                  context,
-                                                  a1,
-                                                  a2,
-                                                ) =>
-                                                    WriteQuiz(funUrlList[i],
-                                                        'course'),
-                                                transitionDuration:
-                                                    Duration(seconds: 0),
-                                              ));
+                                                  WriteQuiz(
+                                                      funUrlList[i], 'course'),
+                                              transitionDuration:
+                                                  Duration(seconds: 0),
+                                            ));
 
-                                          print('go to write quiz');
-                                          return Future<bool>.value(false);
-                                        }
-                                      } else {
-// go to paid
-Navigator.pushReplacement(
-                                      context,
-                                      PageRouteBuilder(
-                                        pageBuilder: (
-                                          context,
-                                          a1,
-                                          a2,
-                                        ) =>
-                                            PaymentPage(),
-                                        transitionDuration:
-                                            Duration(seconds: 0),
-                                      ));
+                                        print('go to write quiz');
                                         return Future<bool>.value(false);
                                       }
+//                                       } else {
+// // go to paid
+//                                         Navigator.pushReplacement(
+//                                             context,
+//                                             PageRouteBuilder(
+//                                               pageBuilder: (
+//                                                 context,
+//                                                 a1,
+//                                                 a2,
+//                                               ) =>
+//                                                   PaymentPage(),
+//                                               transitionDuration:
+//                                                   Duration(seconds: 0),
+//                                             ));
+//                                         return Future<bool>.value(false);
+//                                       }
                                     } else {
                                       if (userData.paid == true) {
                                         print('add to user.Collection');

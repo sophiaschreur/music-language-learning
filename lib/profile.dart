@@ -174,35 +174,35 @@ class _ProfileState extends State<Profile> {
                           ),
                         ),
                       ),
-                      Container(height: 10),
-                      GestureDetector(
-                        onTap: () {},
-                        child: Container(
-                          height: 50,
-                          width: screenWidth * 0.9,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color:
-                                ThemeProvider.themeOf(context).data.accentColor,
-                          ),
-                          child: Row(
-                            children: [
-                              Container(width: screenWidth * 0.05),
-                              Icon(Icons.payment_rounded, size: 30),
-                              Container(width: screenWidth * 0.05),
-                              Text(
-                                "Subscription",
-                                style: TextStyle(
-                                    color: ThemeProvider.themeOf(context)
-                                        .data
-                                        .cardColor,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w900),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
+                      // Container(height: 10),
+                      // GestureDetector(
+                      //   onTap: () {},
+                      //   child: Container(
+                      //     height: 50,
+                      //     width: screenWidth * 0.9,
+                      //     decoration: BoxDecoration(
+                      //       borderRadius: BorderRadius.circular(10),
+                      //       color:
+                      //           ThemeProvider.themeOf(context).data.accentColor,
+                      //     ),
+                      //     child: Row(
+                      //       children: [
+                      //         Container(width: screenWidth * 0.05),
+                      //         Icon(Icons.payment_rounded, size: 30),
+                      //         Container(width: screenWidth * 0.05),
+                      //         Text(
+                      //           "Subscription",
+                      //           style: TextStyle(
+                      //               color: ThemeProvider.themeOf(context)
+                      //                   .data
+                      //                   .cardColor,
+                      //               fontSize: 20,
+                      //               fontWeight: FontWeight.w900),
+                      //         )
+                      //       ],
+                      //     ),
+                      //   ),
+                      // ),
                       Container(height: 10),
                       GestureDetector(
                         onTap: () async {
@@ -562,46 +562,46 @@ class _ProfileState extends State<Profile> {
                                                 ),
                                               ),
                                             ),
-                                            Container(height: 10),
-                                            GestureDetector(
-                                              onTap: () {},
-                                              child: Container(
-                                                height: 50,
-                                                width: screenWidth * 0.9,
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  color: ThemeProvider.themeOf(
-                                                          context)
-                                                      .data
-                                                      .accentColor,
-                                                ),
-                                                child: Row(
-                                                  children: [
-                                                    Container(
-                                                        width:
-                                                            screenWidth * 0.05),
-                                                    Icon(Icons.payment_rounded,
-                                                        size: 30),
-                                                    Container(
-                                                        width:
-                                                            screenWidth * 0.05),
-                                                    Text(
-                                                      "Subscription",
-                                                      style: TextStyle(
-                                                          color: ThemeProvider
-                                                                  .themeOf(
-                                                                      context)
-                                                              .data
-                                                              .cardColor,
-                                                          fontSize: 20,
-                                                          fontWeight:
-                                                              FontWeight.w900),
-                                                    )
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
+                                            // Container(height: 10),
+                                            // GestureDetector(
+                                            //   onTap: () {},
+                                            //   child: Container(
+                                            //     height: 50,
+                                            //     width: screenWidth * 0.9,
+                                            //     decoration: BoxDecoration(
+                                            //       borderRadius:
+                                            //           BorderRadius.circular(10),
+                                            //       color: ThemeProvider.themeOf(
+                                            //               context)
+                                            //           .data
+                                            //           .accentColor,
+                                            //     ),
+                                            //     child: Row(
+                                            //       children: [
+                                            //         Container(
+                                            //             width:
+                                            //                 screenWidth * 0.05),
+                                            //         Icon(Icons.payment_rounded,
+                                            //             size: 30),
+                                            //         Container(
+                                            //             width:
+                                            //                 screenWidth * 0.05),
+                                            //         Text(
+                                            //           "Subscription",
+                                            //           style: TextStyle(
+                                            //               color: ThemeProvider
+                                            //                       .themeOf(
+                                            //                           context)
+                                            //                   .data
+                                            //                   .cardColor,
+                                            //               fontSize: 20,
+                                            //               fontWeight:
+                                            //                   FontWeight.w900),
+                                            //         )
+                                            //       ],
+                                            //     ),
+                                            //   ),
+                                            // ),
                                             Container(height: 10),
                                             GestureDetector(
                                               onTap: () async {
@@ -965,37 +965,37 @@ class _ProfileState extends State<Profile> {
                                     ),
                                   ),
                                 ),
-                                Container(height: 10),
-                                GestureDetector(
-                                  onTap: () {},
-                                  child: Container(
-                                    height: 50,
-                                    width: screenWidth * 0.9,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: ThemeProvider.themeOf(context)
-                                          .data
-                                          .accentColor,
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        Container(width: screenWidth * 0.05),
-                                        Icon(Icons.payment_rounded, size: 30),
-                                        Container(width: screenWidth * 0.05),
-                                        Text(
-                                          "Subscription",
-                                          style: TextStyle(
-                                              color:
-                                                  ThemeProvider.themeOf(context)
-                                                      .data
-                                                      .cardColor,
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w900),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
+                                // Container(height: 10),
+                                // GestureDetector(
+                                //   onTap: () {},
+                                //   child: Container(
+                                //     height: 50,
+                                //     width: screenWidth * 0.9,
+                                //     decoration: BoxDecoration(
+                                //       borderRadius: BorderRadius.circular(10),
+                                //       color: ThemeProvider.themeOf(context)
+                                //           .data
+                                //           .accentColor,
+                                //     ),
+                                //     child: Row(
+                                //       children: [
+                                //         Container(width: screenWidth * 0.05),
+                                //         Icon(Icons.payment_rounded, size: 30),
+                                //         Container(width: screenWidth * 0.05),
+                                //         Text(
+                                //           "Subscription",
+                                //           style: TextStyle(
+                                //               color:
+                                //                   ThemeProvider.themeOf(context)
+                                //                       .data
+                                //                       .cardColor,
+                                //               fontSize: 20,
+                                //               fontWeight: FontWeight.w900),
+                                //         )
+                                //       ],
+                                //     ),
+                                //   ),
+                                // ),
                                 Container(height: 10),
                                 GestureDetector(
                                   onTap: () async {

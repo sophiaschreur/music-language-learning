@@ -16,7 +16,7 @@ import 'write_quiz.dart';
 import 'add.dart';
 import 'database_helper.dart';
 import 'languageSelector.dart';
-import 'payment_page.dart';
+// import 'payment_page.dart';
 
 // import 'the_map.dart';
 // import 'package:youtube_explode_dart/youtube_explode_dart.dart';
@@ -116,8 +116,7 @@ class _TrendingState extends State<Trending> {
                                     showLock
                                         ? Center(
                                             child: Icon(Icons.lock,
-                                                size: 30,
-                                                color: Colors.white))
+                                                size: 30, color: Colors.white))
                                         : Container()
                                   ]));
                               print(i);
@@ -302,59 +301,37 @@ class _TrendingState extends State<Trending> {
                                     print(inCollection);
                                     if (direction ==
                                         DismissDirection.endToStart) {
-                                      if (i < 2) {
-                                        var db = DatabaseHelper();
+                                      // if (i < 2) {
+                                      var db = DatabaseHelper();
 
-                                        if (await db.getLyricsFromVideoID(
-                                                popularUrlList[i]) ==
-                                            '') {
-                                          urlText = languageData
-                                              .popular[popularUrlList[i]];
-                                          print('4');
-                                          Navigator.pushReplacement(
-                                            context,
-                                            PageRouteBuilder(
-                                              pageBuilder: (
-                                                context,
-                                                a1,
-                                                a2,
-                                              ) =>
-                                                  Add(
-                                                      urlText,
-                                                      popularUrlList[i],
-                                                      'write_quiz',
-                                                      'trending'),
-                                              transitionDuration: Duration(
-                                                seconds: 0,
-                                              ),
-                                            ),
-                                          );
-                                          setState(() {});
-                                          return Future<bool>.value(false);
-                                        } else {
-                                          holders.clear();
-                                          textAndTrans.clear();
-                                          textLines.clear();
-                                          getTheLyricsOnce = true;
-                                          Navigator.pushReplacement(
+                                      if (await db.getLyricsFromVideoID(
+                                              popularUrlList[i]) ==
+                                          '') {
+                                        urlText = languageData
+                                            .popular[popularUrlList[i]];
+                                        print('4');
+                                        Navigator.pushReplacement(
+                                          context,
+                                          PageRouteBuilder(
+                                            pageBuilder: (
                                               context,
-                                              PageRouteBuilder(
-                                                pageBuilder: (
-                                                  context,
-                                                  a1,
-                                                  a2,
-                                                ) =>
-                                                    WriteQuiz(popularUrlList[i],
-                                                        'trending'),
-                                                transitionDuration:
-                                                    Duration(seconds: 0),
-                                              ));
-
-                                          print('go to write quiz');
-                                          return Future<bool>.value(false);
-                                        }
+                                              a1,
+                                              a2,
+                                            ) =>
+                                                Add(urlText, popularUrlList[i],
+                                                    'write_quiz', 'trending'),
+                                            transitionDuration: Duration(
+                                              seconds: 0,
+                                            ),
+                                          ),
+                                        );
+                                        setState(() {});
+                                        return Future<bool>.value(false);
                                       } else {
-                                        // go to paid
+                                        holders.clear();
+                                        textAndTrans.clear();
+                                        textLines.clear();
+                                        getTheLyricsOnce = true;
                                         Navigator.pushReplacement(
                                             context,
                                             PageRouteBuilder(
@@ -363,13 +340,32 @@ class _TrendingState extends State<Trending> {
                                                 a1,
                                                 a2,
                                               ) =>
-                                                  PaymentPage(),
+                                                  WriteQuiz(popularUrlList[i],
+                                                      'trending'),
                                               transitionDuration:
                                                   Duration(seconds: 0),
                                             ));
 
+                                        print('go to write quiz');
                                         return Future<bool>.value(false);
                                       }
+                                      // } else {
+                                      //   // go to paid
+                                      //   Navigator.pushReplacement(
+                                      //       context,
+                                      //       PageRouteBuilder(
+                                      //         pageBuilder: (
+                                      //           context,
+                                      //           a1,
+                                      //           a2,
+                                      //         ) =>
+                                      //             PaymentPage(),
+                                      //         transitionDuration:
+                                      //             Duration(seconds: 0),
+                                      //       ));
+
+                                      //   return Future<bool>.value(false);
+                                      // }
                                     } else {
                                       if (userData.paid == true) {
                                         print(popularUrlList[i]);
@@ -448,59 +444,37 @@ class _TrendingState extends State<Trending> {
                                     print(inCollection);
                                     if (direction ==
                                         DismissDirection.endToStart) {
-                                      if (i < 2) {
-                                        var db = DatabaseHelper();
+                                      // if (i < 2) {
+                                      var db = DatabaseHelper();
 
-                                        if (await db.getLyricsFromVideoID(
-                                                popularUrlList[i]) ==
-                                            '') {
-                                          urlText = languageData
-                                              .popular[popularUrlList[i]];
-                                          print('4');
-                                          Navigator.pushReplacement(
-                                            context,
-                                            PageRouteBuilder(
-                                              pageBuilder: (
-                                                context,
-                                                a1,
-                                                a2,
-                                              ) =>
-                                                  Add(
-                                                      urlText,
-                                                      popularUrlList[i],
-                                                      'write_quiz',
-                                                      'trending'),
-                                              transitionDuration: Duration(
-                                                seconds: 0,
-                                              ),
-                                            ),
-                                          );
-                                          setState(() {});
-                                          return Future<bool>.value(false);
-                                        } else {
-                                          holders.clear();
-                                          textAndTrans.clear();
-                                          textLines.clear();
-                                          getTheLyricsOnce = true;
-                                          Navigator.pushReplacement(
+                                      if (await db.getLyricsFromVideoID(
+                                              popularUrlList[i]) ==
+                                          '') {
+                                        urlText = languageData
+                                            .popular[popularUrlList[i]];
+                                        print('4');
+                                        Navigator.pushReplacement(
+                                          context,
+                                          PageRouteBuilder(
+                                            pageBuilder: (
                                               context,
-                                              PageRouteBuilder(
-                                                pageBuilder: (
-                                                  context,
-                                                  a1,
-                                                  a2,
-                                                ) =>
-                                                    WriteQuiz(popularUrlList[i],
-                                                        'trending'),
-                                                transitionDuration:
-                                                    Duration(seconds: 0),
-                                              ));
-
-                                          print('go to write quiz');
-                                          return Future<bool>.value(false);
-                                        }
+                                              a1,
+                                              a2,
+                                            ) =>
+                                                Add(urlText, popularUrlList[i],
+                                                    'write_quiz', 'trending'),
+                                            transitionDuration: Duration(
+                                              seconds: 0,
+                                            ),
+                                          ),
+                                        );
+                                        setState(() {});
+                                        return Future<bool>.value(false);
                                       } else {
-                                        // go to paid
+                                        holders.clear();
+                                        textAndTrans.clear();
+                                        textLines.clear();
+                                        getTheLyricsOnce = true;
                                         Navigator.pushReplacement(
                                             context,
                                             PageRouteBuilder(
@@ -509,12 +483,31 @@ class _TrendingState extends State<Trending> {
                                                 a1,
                                                 a2,
                                               ) =>
-                                                  PaymentPage(),
+                                                  WriteQuiz(popularUrlList[i],
+                                                      'trending'),
                                               transitionDuration:
                                                   Duration(seconds: 0),
                                             ));
+
+                                        print('go to write quiz');
                                         return Future<bool>.value(false);
                                       }
+                                      // } else {
+                                      //   // go to paid
+                                      //   Navigator.pushReplacement(
+                                      //       context,
+                                      //       PageRouteBuilder(
+                                      //         pageBuilder: (
+                                      //           context,
+                                      //           a1,
+                                      //           a2,
+                                      //         ) =>
+                                      //             PaymentPage(),
+                                      //         transitionDuration:
+                                      //             Duration(seconds: 0),
+                                      //       ));
+                                      //   return Future<bool>.value(false);
+                                      // }
                                     } else {
                                       if (userData.paid == true) {
                                         if (!inCollection) {
@@ -638,60 +631,37 @@ class _TrendingState extends State<Trending> {
                                     print(inCollection);
                                     if (direction ==
                                         DismissDirection.endToStart) {
-                                      if (i < 2) {
-                                        var db = DatabaseHelper();
+                                      // if (i < 2) {
+                                      var db = DatabaseHelper();
 
-                                        if (await db.getLyricsFromVideoID(
-                                                trendingUrlList[i]) ==
-                                            '') {
-                                          urlText = languageData
-                                              .trending[trendingUrlList[i]];
-                                          print('4');
-                                          Navigator.pushReplacement(
-                                            context,
-                                            PageRouteBuilder(
-                                              pageBuilder: (
-                                                context,
-                                                a1,
-                                                a2,
-                                              ) =>
-                                                  Add(
-                                                      urlText,
-                                                      trendingUrlList[i],
-                                                      'write_quiz',
-                                                      'trending'),
-                                              transitionDuration: Duration(
-                                                seconds: 0,
-                                              ),
-                                            ),
-                                          );
-                                          setState(() {});
-                                          return Future<bool>.value(false);
-                                        } else {
-                                          holders.clear();
-                                          textAndTrans.clear();
-                                          textLines.clear();
-                                          getTheLyricsOnce = true;
-                                          Navigator.pushReplacement(
+                                      if (await db.getLyricsFromVideoID(
+                                              trendingUrlList[i]) ==
+                                          '') {
+                                        urlText = languageData
+                                            .trending[trendingUrlList[i]];
+                                        print('4');
+                                        Navigator.pushReplacement(
+                                          context,
+                                          PageRouteBuilder(
+                                            pageBuilder: (
                                               context,
-                                              PageRouteBuilder(
-                                                pageBuilder: (
-                                                  context,
-                                                  a1,
-                                                  a2,
-                                                ) =>
-                                                    WriteQuiz(
-                                                        trendingUrlList[i],
-                                                        'trending'),
-                                                transitionDuration:
-                                                    Duration(seconds: 0),
-                                              ));
-
-                                          print('go to write quiz');
-                                          return Future<bool>.value(false);
-                                        }
+                                              a1,
+                                              a2,
+                                            ) =>
+                                                Add(urlText, trendingUrlList[i],
+                                                    'write_quiz', 'trending'),
+                                            transitionDuration: Duration(
+                                              seconds: 0,
+                                            ),
+                                          ),
+                                        );
+                                        setState(() {});
+                                        return Future<bool>.value(false);
                                       } else {
-                                        // go to paid
+                                        holders.clear();
+                                        textAndTrans.clear();
+                                        textLines.clear();
+                                        getTheLyricsOnce = true;
                                         Navigator.pushReplacement(
                                             context,
                                             PageRouteBuilder(
@@ -700,12 +670,31 @@ class _TrendingState extends State<Trending> {
                                                 a1,
                                                 a2,
                                               ) =>
-                                                  PaymentPage(),
+                                                  WriteQuiz(trendingUrlList[i],
+                                                      'trending'),
                                               transitionDuration:
                                                   Duration(seconds: 0),
                                             ));
+
+                                        print('go to write quiz');
                                         return Future<bool>.value(false);
                                       }
+                                      // } else {
+                                      //   // go to paid
+                                      //   Navigator.pushReplacement(
+                                      //       context,
+                                      //       PageRouteBuilder(
+                                      //         pageBuilder: (
+                                      //           context,
+                                      //           a1,
+                                      //           a2,
+                                      //         ) =>
+                                      //             PaymentPage(),
+                                      //         transitionDuration:
+                                      //             Duration(seconds: 0),
+                                      //       ));
+                                      //   return Future<bool>.value(false);
+                                      // }
                                     } else {
                                       if (userData.paid == true) {
                                         if (!inCollection) {
@@ -781,60 +770,37 @@ class _TrendingState extends State<Trending> {
                                     print(inCollection);
                                     if (direction ==
                                         DismissDirection.endToStart) {
-                                      if (i < 2) {
-                                        var db = DatabaseHelper();
+                                      // if (i < 2) {
+                                      var db = DatabaseHelper();
 
-                                        if (await db.getLyricsFromVideoID(
-                                                trendingUrlList[i]) ==
-                                            '') {
-                                          urlText = languageData
-                                              .trending[trendingUrlList[i]];
-                                          print('4');
-                                          Navigator.pushReplacement(
-                                            context,
-                                            PageRouteBuilder(
-                                              pageBuilder: (
-                                                context,
-                                                a1,
-                                                a2,
-                                              ) =>
-                                                  Add(
-                                                      urlText,
-                                                      trendingUrlList[i],
-                                                      'write_quiz',
-                                                      'trending'),
-                                              transitionDuration: Duration(
-                                                seconds: 0,
-                                              ),
-                                            ),
-                                          );
-                                          setState(() {});
-                                          return Future<bool>.value(false);
-                                        } else {
-                                          holders.clear();
-                                          textAndTrans.clear();
-                                          textLines.clear();
-                                          getTheLyricsOnce = true;
-                                          Navigator.pushReplacement(
+                                      if (await db.getLyricsFromVideoID(
+                                              trendingUrlList[i]) ==
+                                          '') {
+                                        urlText = languageData
+                                            .trending[trendingUrlList[i]];
+                                        print('4');
+                                        Navigator.pushReplacement(
+                                          context,
+                                          PageRouteBuilder(
+                                            pageBuilder: (
                                               context,
-                                              PageRouteBuilder(
-                                                pageBuilder: (
-                                                  context,
-                                                  a1,
-                                                  a2,
-                                                ) =>
-                                                    WriteQuiz(
-                                                        trendingUrlList[i],
-                                                        'trending'),
-                                                transitionDuration:
-                                                    Duration(seconds: 0),
-                                              ));
-
-                                          print('go to write quiz');
-                                          return Future<bool>.value(false);
-                                        }
+                                              a1,
+                                              a2,
+                                            ) =>
+                                                Add(urlText, trendingUrlList[i],
+                                                    'write_quiz', 'trending'),
+                                            transitionDuration: Duration(
+                                              seconds: 0,
+                                            ),
+                                          ),
+                                        );
+                                        setState(() {});
+                                        return Future<bool>.value(false);
                                       } else {
-                                        // go to paid
+                                        holders.clear();
+                                        textAndTrans.clear();
+                                        textLines.clear();
+                                        getTheLyricsOnce = true;
                                         Navigator.pushReplacement(
                                             context,
                                             PageRouteBuilder(
@@ -843,12 +809,31 @@ class _TrendingState extends State<Trending> {
                                                 a1,
                                                 a2,
                                               ) =>
-                                                  PaymentPage(),
+                                                  WriteQuiz(trendingUrlList[i],
+                                                      'trending'),
                                               transitionDuration:
                                                   Duration(seconds: 0),
                                             ));
+
+                                        print('go to write quiz');
                                         return Future<bool>.value(false);
                                       }
+                                      // } else {
+                                      //   // go to paid
+                                      //   Navigator.pushReplacement(
+                                      //       context,
+                                      //       PageRouteBuilder(
+                                      //         pageBuilder: (
+                                      //           context,
+                                      //           a1,
+                                      //           a2,
+                                      //         ) =>
+                                      //             PaymentPage(),
+                                      //         transitionDuration:
+                                      //             Duration(seconds: 0),
+                                      //       ));
+                                      //   return Future<bool>.value(false);
+                                      // }
                                     } else {
                                       if (userData.paid == true) {
                                         if (!inCollection) {
