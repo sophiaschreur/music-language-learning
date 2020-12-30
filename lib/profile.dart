@@ -275,35 +275,6 @@ class _ProfileState extends State<Profile> {
                           ),
                         ),
                       ),
-                      Container(height: 10),
-                      GestureDetector(
-                        onTap: () {},
-                        child: Container(
-                          height: 50,
-                          width: screenWidth * 0.9,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color:
-                                ThemeProvider.themeOf(context).data.accentColor,
-                          ),
-                          child: Row(
-                            children: [
-                              Container(width: screenWidth * 0.05),
-                              Icon(Icons.wysiwyg, size: 30),
-                              Container(width: screenWidth * 0.05),
-                              Text(
-                                "Terms of Conditions",
-                                style: TextStyle(
-                                    color: ThemeProvider.themeOf(context)
-                                        .data
-                                        .cardColor,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w900),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
                     ];
                     return theProfileList;
                   }
@@ -728,46 +699,6 @@ class _ProfileState extends State<Profile> {
                                                 ),
                                               ),
                                             ),
-                                            Container(height: 10),
-                                            GestureDetector(
-                                              onTap: () {},
-                                              child: Container(
-                                                height: 50,
-                                                width: screenWidth * 0.9,
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  color: ThemeProvider.themeOf(
-                                                          context)
-                                                      .data
-                                                      .accentColor,
-                                                ),
-                                                child: Row(
-                                                  children: [
-                                                    Container(
-                                                        width:
-                                                            screenWidth * 0.05),
-                                                    Icon(Icons.wysiwyg,
-                                                        size: 30),
-                                                    Container(
-                                                        width:
-                                                            screenWidth * 0.05),
-                                                    Text(
-                                                      "Terms of Conditions",
-                                                      style: TextStyle(
-                                                          color: ThemeProvider
-                                                                  .themeOf(
-                                                                      context)
-                                                              .data
-                                                              .cardColor,
-                                                          fontSize: 20,
-                                                          fontWeight:
-                                                              FontWeight.w900),
-                                                    )
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
                                           ],
                                         ),
                                       ),
@@ -1130,37 +1061,6 @@ class _ProfileState extends State<Profile> {
                                         Container(width: screenWidth * 0.05),
                                         Text(
                                           "Privacy Policy",
-                                          style: TextStyle(
-                                              color:
-                                                  ThemeProvider.themeOf(context)
-                                                      .data
-                                                      .cardColor,
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w900),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Container(height: 10),
-                                GestureDetector(
-                                  onTap: () {},
-                                  child: Container(
-                                    height: 50,
-                                    width: screenWidth * 0.9,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: ThemeProvider.themeOf(context)
-                                          .data
-                                          .accentColor,
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        Container(width: screenWidth * 0.05),
-                                        Icon(Icons.wysiwyg, size: 30),
-                                        Container(width: screenWidth * 0.05),
-                                        Text(
-                                          "Terms of Conditions",
                                           style: TextStyle(
                                               color:
                                                   ThemeProvider.themeOf(context)
