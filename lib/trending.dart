@@ -88,10 +88,11 @@ class _TrendingState extends State<Trending> {
 
                           popularUrlList.clear();
                           trendingUrlList.clear();
-                          var popularCounter = 0;
+                          // var popularCounter = 0;
                           for (var i in popularKeys) {
-                            var showLock =
-                                popularCounter >= 2 && userData.paid == false;
+                            var showLock = false;
+                            // var showLock =
+                            //     popularCounter >= 2 && userData.paid == false;
                             try {
                               popularUrlList.add(i);
                               var thePic = AspectRatio(
@@ -143,12 +144,13 @@ class _TrendingState extends State<Trending> {
                             } catch (e) {
                               print(e);
                             }
-                            popularCounter++;
+                            // popularCounter++;
                           }
-                          var trendingCounter = 0;
+                          // var trendingCounter = 0;
                           for (var i in trendingKeys) {
-                            var showLock =
-                                trendingCounter >= 2 && userData.paid == false;
+                            var showLock = false;
+                            // var showLock =
+                            //     trendingCounter >= 2 && userData.paid == false;
                             try {
                               trendingUrlList.add(i);
                               var thePic = AspectRatio(
@@ -203,7 +205,7 @@ class _TrendingState extends State<Trending> {
                             } catch (e) {
                               print(e);
                             }
-                            trendingCounter++;
+                            // trendingCounter++;
                           }
 
                           if (addToTrendingList.length != 0) {

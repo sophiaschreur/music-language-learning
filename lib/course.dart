@@ -85,10 +85,11 @@ class _CourseState extends State<Course> {
 
                           fullUrlList.clear();
                           funUrlList.clear();
-                          var fullCounter = 0;
+                          // var fullCounter = 0;
                           for (var i in fullKeys) {
-                            var showLock =
-                                fullCounter >= 2 && userData.paid == false;
+                            var showLock = false;
+                            // var showLock =
+                            //     fullCounter >= 2 && userData.paid == false;
                             try {
                               fullUrlList.add(i);
                               var thePic = AspectRatio(
@@ -133,12 +134,13 @@ class _CourseState extends State<Course> {
                             } catch (e) {
                               print(e);
                             }
-                            fullCounter++;
+                            // fullCounter++;
                           }
-                          var funCounter = 0;
+                          // var funCounter = 0;
                           for (var i in funKeys) {
-                            var showLock =
-                                funCounter >= 2 && userData.paid == false;
+                            var showLock = false;
+                            // var showLock =
+                            //     funCounter >= 2 && userData.paid == false;
                             try {
                               funUrlList.add(i);
                               var thePic = AspectRatio(
@@ -184,7 +186,7 @@ class _CourseState extends State<Course> {
                             } catch (e) {
                               print(e);
                             }
-                            funCounter++;
+                            // funCounter++;
                           }
 
                           if (addToList.length != 0) {
