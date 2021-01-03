@@ -13,6 +13,7 @@ import 'check_streak_and_words.dart';
 import 'user.dart';
 import 'languageSelector.dart';
 import 'package:toggle_switch/toggle_switch.dart';
+import 'settings.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -90,26 +91,18 @@ class _ProfileState extends State<Profile> {
                       Container(height: 10),
                       GestureDetector(
                         onTap: () {
-                          showModalBottomSheet(
-                            context: context,
-                            builder: (context) {
-                              return Container(
-                                color: Colors.transparent,
-                                child: Container(
-                                  height: screenHeight * 0.8,
-                                  decoration: BoxDecoration(
-                                      color: Theme.of(context).primaryColor,
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(10),
-                                        topRight: Radius.circular(10),
-                                      )),
-                                  child: Column(
-                                    children: <Widget>[],
-                                  ),
-                                ),
-                              );
-                            },
-                          );
+                          Navigator.pushReplacement(
+                              context,
+                              PageRouteBuilder(
+                                pageBuilder: (
+                                  context,
+                                  a1,
+                                  a2,
+                                ) =>
+                                    Settings('Language'),
+                                transitionDuration: Duration(seconds: 0),
+                              ));
+                          setState(() {});
                         },
                         child: Container(
                           height: 50,
@@ -140,26 +133,18 @@ class _ProfileState extends State<Profile> {
                       Container(height: 10),
                       GestureDetector(
                         onTap: () {
-                          showModalBottomSheet(
-                            context: context,
-                            builder: (context) {
-                              return Container(
-                                color: Colors.transparent,
-                                child: Container(
-                                  height: screenHeight * 0.8,
-                                  decoration: BoxDecoration(
-                                      color: Theme.of(context).primaryColor,
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(10),
-                                        topRight: Radius.circular(10),
-                                      )),
-                                  child: Column(
-                                    children: <Widget>[],
-                                  ),
-                                ),
-                              );
-                            },
-                          );
+                          Navigator.pushReplacement(
+                              context,
+                              PageRouteBuilder(
+                                pageBuilder: (
+                                  context,
+                                  a1,
+                                  a2,
+                                ) =>
+                                    Settings('Email'),
+                                transitionDuration: Duration(seconds: 0),
+                              ));
+                          setState(() {});
                         },
                         child: Container(
                           height: 50,
@@ -187,56 +172,7 @@ class _ProfileState extends State<Profile> {
                           ),
                         ),
                       ),
-                      Container(height: 10),
-                      GestureDetector(
-                        onTap: () {
-                          showModalBottomSheet(
-                            context: context,
-                            builder: (context) {
-                              return Container(
-                                color: Colors.transparent,
-                                child: Container(
-                                  height: screenHeight * 0.8,
-                                  decoration: BoxDecoration(
-                                      color: Theme.of(context).primaryColor,
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(10),
-                                        topRight: Radius.circular(10),
-                                      )),
-                                  child: Column(
-                                    children: <Widget>[],
-                                  ),
-                                ),
-                              );
-                            },
-                          );
-                        },
-                        child: Container(
-                          height: 50,
-                          width: screenWidth * 0.9,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color:
-                                ThemeProvider.themeOf(context).data.accentColor,
-                          ),
-                          child: Row(
-                            children: [
-                              Container(width: screenWidth * 0.05),
-                              Icon(Icons.lock, size: 30),
-                              Container(width: screenWidth * 0.05),
-                              Text(
-                                "Password",
-                                style: TextStyle(
-                                    color: ThemeProvider.themeOf(context)
-                                        .data
-                                        .cardColor,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w900),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
+
                       // Container(height: 10),
                       // GestureDetector(
                       //   onTap: () {},
@@ -312,26 +248,18 @@ class _ProfileState extends State<Profile> {
                       Container(height: 10),
                       GestureDetector(
                         onTap: () {
-                          showModalBottomSheet(
-                            context: context,
-                            builder: (context) {
-                              return Container(
-                                color: Colors.transparent,
-                                child: Container(
-                                  height: screenHeight * 0.8,
-                                  decoration: BoxDecoration(
-                                      color: Theme.of(context).primaryColor,
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(10),
-                                        topRight: Radius.circular(10),
-                                      )),
-                                  child: Column(
-                                    children: <Widget>[],
-                                  ),
-                                ),
-                              );
-                            },
-                          );
+                          Navigator.pushReplacement(
+                              context,
+                              PageRouteBuilder(
+                                pageBuilder: (
+                                  context,
+                                  a1,
+                                  a2,
+                                ) =>
+                                    Settings('Privacy Policy'),
+                                transitionDuration: Duration(seconds: 0),
+                              ));
+                          setState(() {});
                         },
                         child: Container(
                           height: 50,
@@ -348,6 +276,35 @@ class _ProfileState extends State<Profile> {
                               Container(width: screenWidth * 0.05),
                               Text(
                                 "Privacy Policy",
+                                style: TextStyle(
+                                    color: ThemeProvider.themeOf(context)
+                                        .data
+                                        .cardColor,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w900),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(height: 10),
+                      GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          height: 50,
+                          width: screenWidth * 0.9,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color:
+                                ThemeProvider.themeOf(context).data.accentColor,
+                          ),
+                          child: Row(
+                            children: [
+                              Container(width: screenWidth * 0.05),
+                              Icon(Icons.attach_money, size: 30),
+                              Container(width: screenWidth * 0.05),
+                              Text(
+                                "Donate",
                                 style: TextStyle(
                                     color: ThemeProvider.themeOf(context)
                                         .data
@@ -531,36 +488,19 @@ class _ProfileState extends State<Profile> {
                                             Container(height: 10),
                                             GestureDetector(
                                               onTap: () {
-                                                showModalBottomSheet(
-                                                  context: context,
-                                                  builder: (context) {
-                                                    return Container(
-                                                      color: Colors.transparent,
-                                                      child: Container(
-                                                        height:
-                                                            screenHeight * 0.8,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                                color: Theme.of(
-                                                                        context)
-                                                                    .primaryColor,
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .only(
-                                                                  topLeft: Radius
-                                                                      .circular(
-                                                                          10),
-                                                                  topRight: Radius
-                                                                      .circular(
-                                                                          10),
-                                                                )),
-                                                        child: Column(
-                                                          children: <Widget>[],
-                                                        ),
-                                                      ),
-                                                    );
-                                                  },
-                                                );
+                                                Navigator.pushReplacement(
+                                                    context,
+                                                    PageRouteBuilder(
+                                                      pageBuilder: (
+                                                        context,
+                                                        a1,
+                                                        a2,
+                                                      ) =>
+                                                          Settings('Language'),
+                                                      transitionDuration:
+                                                          Duration(seconds: 0),
+                                                    ));
+                                                setState(() {});
                                               },
                                               child: Container(
                                                 height: 50,
@@ -602,36 +542,19 @@ class _ProfileState extends State<Profile> {
                                             Container(height: 10),
                                             GestureDetector(
                                               onTap: () {
-                                                showModalBottomSheet(
-                                                  context: context,
-                                                  builder: (context) {
-                                                    return Container(
-                                                      color: Colors.transparent,
-                                                      child: Container(
-                                                        height:
-                                                            screenHeight * 0.8,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                                color: Theme.of(
-                                                                        context)
-                                                                    .primaryColor,
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .only(
-                                                                  topLeft: Radius
-                                                                      .circular(
-                                                                          10),
-                                                                  topRight: Radius
-                                                                      .circular(
-                                                                          10),
-                                                                )),
-                                                        child: Column(
-                                                          children: <Widget>[],
-                                                        ),
-                                                      ),
-                                                    );
-                                                  },
-                                                );
+                                                Navigator.pushReplacement(
+                                                    context,
+                                                    PageRouteBuilder(
+                                                      pageBuilder: (
+                                                        context,
+                                                        a1,
+                                                        a2,
+                                                      ) =>
+                                                          Settings('Email'),
+                                                      transitionDuration:
+                                                          Duration(seconds: 0),
+                                                    ));
+                                                setState(() {});
                                               },
                                               child: Container(
                                                 height: 50,
@@ -669,76 +592,7 @@ class _ProfileState extends State<Profile> {
                                                 ),
                                               ),
                                             ),
-                                            Container(height: 10),
-                                            GestureDetector(
-                                              onTap: () {
-                                                showModalBottomSheet(
-                                                  context: context,
-                                                  builder: (context) {
-                                                    return Container(
-                                                      color: Colors.transparent,
-                                                      child: Container(
-                                                        height:
-                                                            screenHeight * 0.8,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                                color: Theme.of(
-                                                                        context)
-                                                                    .primaryColor,
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .only(
-                                                                  topLeft: Radius
-                                                                      .circular(
-                                                                          10),
-                                                                  topRight: Radius
-                                                                      .circular(
-                                                                          10),
-                                                                )),
-                                                        child: Column(
-                                                          children: <Widget>[],
-                                                        ),
-                                                      ),
-                                                    );
-                                                  },
-                                                );
-                                              },
-                                              child: Container(
-                                                height: 50,
-                                                width: screenWidth * 0.9,
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(10),
-                                                  color: ThemeProvider.themeOf(
-                                                          context)
-                                                      .data
-                                                      .accentColor,
-                                                ),
-                                                child: Row(
-                                                  children: [
-                                                    Container(
-                                                        width:
-                                                            screenWidth * 0.05),
-                                                    Icon(Icons.lock, size: 30),
-                                                    Container(
-                                                        width:
-                                                            screenWidth * 0.05),
-                                                    Text(
-                                                      "Password",
-                                                      style: TextStyle(
-                                                          color: ThemeProvider
-                                                                  .themeOf(
-                                                                      context)
-                                                              .data
-                                                              .cardColor,
-                                                          fontSize: 20,
-                                                          fontWeight:
-                                                              FontWeight.w900),
-                                                    )
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
+
                                             // Container(height: 10),
                                             // GestureDetector(
                                             //   onTap: () {},
@@ -839,36 +693,20 @@ class _ProfileState extends State<Profile> {
                                             Container(height: 10),
                                             GestureDetector(
                                               onTap: () {
-                                                showModalBottomSheet(
-                                                  context: context,
-                                                  builder: (context) {
-                                                    return Container(
-                                                      color: Colors.transparent,
-                                                      child: Container(
-                                                        height:
-                                                            screenHeight * 0.8,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                                color: Theme.of(
-                                                                        context)
-                                                                    .primaryColor,
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .only(
-                                                                  topLeft: Radius
-                                                                      .circular(
-                                                                          10),
-                                                                  topRight: Radius
-                                                                      .circular(
-                                                                          10),
-                                                                )),
-                                                        child: Column(
-                                                          children: <Widget>[],
-                                                        ),
-                                                      ),
-                                                    );
-                                                  },
-                                                );
+                                                Navigator.pushReplacement(
+                                                    context,
+                                                    PageRouteBuilder(
+                                                      pageBuilder: (
+                                                        context,
+                                                        a1,
+                                                        a2,
+                                                      ) =>
+                                                          Settings(
+                                                              'Privacy Policy'),
+                                                      transitionDuration:
+                                                          Duration(seconds: 0),
+                                                    ));
+                                                setState(() {});
                                               },
                                               child: Container(
                                                 height: 50,
@@ -893,6 +731,46 @@ class _ProfileState extends State<Profile> {
                                                             screenWidth * 0.05),
                                                     Text(
                                                       "Privacy Policy",
+                                                      style: TextStyle(
+                                                          color: ThemeProvider
+                                                                  .themeOf(
+                                                                      context)
+                                                              .data
+                                                              .cardColor,
+                                                          fontSize: 20,
+                                                          fontWeight:
+                                                              FontWeight.w900),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                            Container(height: 10),
+                                            GestureDetector(
+                                              onTap: () {},
+                                              child: Container(
+                                                height: 50,
+                                                width: screenWidth * 0.9,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  color: ThemeProvider.themeOf(
+                                                          context)
+                                                      .data
+                                                      .accentColor,
+                                                ),
+                                                child: Row(
+                                                  children: [
+                                                    Container(
+                                                        width:
+                                                            screenWidth * 0.05),
+                                                    Icon(Icons.attach_money,
+                                                        size: 30),
+                                                    Container(
+                                                        width:
+                                                            screenWidth * 0.05),
+                                                    Text(
+                                                      "Donate",
                                                       style: TextStyle(
                                                           color: ThemeProvider
                                                                   .themeOf(
@@ -933,7 +811,21 @@ class _ProfileState extends State<Profile> {
                             child: Row(
                               children: [
                                 GestureDetector(
-                                  onTap: () {},
+                                  onTap: () {
+                                    Navigator.pushReplacement(
+                                        context,
+                                        PageRouteBuilder(
+                                          pageBuilder: (
+                                            context,
+                                            a1,
+                                            a2,
+                                          ) =>
+                                              Settings('Share'),
+                                          transitionDuration:
+                                              Duration(seconds: 0),
+                                        ));
+                                    setState(() {});
+                                  },
                                   child: Container(
                                       decoration: BoxDecoration(
                                           borderRadius:
@@ -956,7 +848,21 @@ class _ProfileState extends State<Profile> {
                                 ),
                                 Spacer(),
                                 GestureDetector(
-                                    onTap: () {},
+                                    onTap: () {
+                                      Navigator.pushReplacement(
+                                          context,
+                                          PageRouteBuilder(
+                                            pageBuilder: (
+                                              context,
+                                              a1,
+                                              a2,
+                                            ) =>
+                                                Settings('Feedback'),
+                                            transitionDuration:
+                                                Duration(seconds: 0),
+                                          ));
+                                      setState(() {});
+                                    },
                                     child: Container(
                                         decoration: BoxDecoration(
                                           borderRadius:
@@ -1083,27 +989,19 @@ class _ProfileState extends State<Profile> {
                                 Container(height: 10),
                                 GestureDetector(
                                   onTap: () {
-                                    showModalBottomSheet(
-                                      context: context,
-                                      builder: (context) {
-                                        return Container(
-                                          color: Colors.transparent,
-                                          child: Container(
-                                            height: screenHeight * 0.8,
-                                            decoration: BoxDecoration(
-                                                color: Theme.of(context)
-                                                    .primaryColor,
-                                                borderRadius: BorderRadius.only(
-                                                  topLeft: Radius.circular(10),
-                                                  topRight: Radius.circular(10),
-                                                )),
-                                            child: Column(
-                                              children: <Widget>[],
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                    );
+                                    Navigator.pushReplacement(
+                                        context,
+                                        PageRouteBuilder(
+                                          pageBuilder: (
+                                            context,
+                                            a1,
+                                            a2,
+                                          ) =>
+                                              Settings('Language'),
+                                          transitionDuration:
+                                              Duration(seconds: 0),
+                                        ));
+                                    setState(() {});
                                   },
                                   child: Container(
                                     height: 50,
@@ -1136,27 +1034,19 @@ class _ProfileState extends State<Profile> {
                                 Container(height: 10),
                                 GestureDetector(
                                   onTap: () {
-                                    showModalBottomSheet(
-                                      context: context,
-                                      builder: (context) {
-                                        return Container(
-                                          color: Colors.transparent,
-                                          child: Container(
-                                            height: screenHeight * 0.8,
-                                            decoration: BoxDecoration(
-                                                color: Theme.of(context)
-                                                    .primaryColor,
-                                                borderRadius: BorderRadius.only(
-                                                  topLeft: Radius.circular(10),
-                                                  topRight: Radius.circular(10),
-                                                )),
-                                            child: Column(
-                                              children: <Widget>[],
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                    );
+                                    Navigator.pushReplacement(
+                                        context,
+                                        PageRouteBuilder(
+                                          pageBuilder: (
+                                            context,
+                                            a1,
+                                            a2,
+                                          ) =>
+                                              Settings('Email'),
+                                          transitionDuration:
+                                              Duration(seconds: 0),
+                                        ));
+                                    setState(() {});
                                   },
                                   child: Container(
                                     height: 50,
@@ -1186,59 +1076,7 @@ class _ProfileState extends State<Profile> {
                                     ),
                                   ),
                                 ),
-                                Container(height: 10),
-                                GestureDetector(
-                                  onTap: () {
-                                    showModalBottomSheet(
-                                      context: context,
-                                      builder: (context) {
-                                        return Container(
-                                          color: Colors.transparent,
-                                          child: Container(
-                                            height: screenHeight * 0.8,
-                                            decoration: BoxDecoration(
-                                                color: Theme.of(context)
-                                                    .primaryColor,
-                                                borderRadius: BorderRadius.only(
-                                                  topLeft: Radius.circular(10),
-                                                  topRight: Radius.circular(10),
-                                                )),
-                                            child: Column(
-                                              children: <Widget>[],
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                    );
-                                  },
-                                  child: Container(
-                                    height: 50,
-                                    width: screenWidth * 0.9,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: ThemeProvider.themeOf(context)
-                                          .data
-                                          .accentColor,
-                                    ),
-                                    child: Row(
-                                      children: [
-                                        Container(width: screenWidth * 0.05),
-                                        Icon(Icons.lock, size: 30),
-                                        Container(width: screenWidth * 0.05),
-                                        Text(
-                                          "Password",
-                                          style: TextStyle(
-                                              color:
-                                                  ThemeProvider.themeOf(context)
-                                                      .data
-                                                      .cardColor,
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w900),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
+
                                 // Container(height: 10),
                                 // GestureDetector(
                                 //   onTap: () {},
@@ -1319,27 +1157,19 @@ class _ProfileState extends State<Profile> {
                                 Container(height: 10),
                                 GestureDetector(
                                   onTap: () {
-                                    showModalBottomSheet(
-                                      context: context,
-                                      builder: (context) {
-                                        return Container(
-                                          color: Colors.transparent,
-                                          child: Container(
-                                            height: screenHeight * 0.8,
-                                            decoration: BoxDecoration(
-                                                color: Theme.of(context)
-                                                    .primaryColor,
-                                                borderRadius: BorderRadius.only(
-                                                  topLeft: Radius.circular(10),
-                                                  topRight: Radius.circular(10),
-                                                )),
-                                            child: Column(
-                                              children: <Widget>[],
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                    );
+                                    Navigator.pushReplacement(
+                                        context,
+                                        PageRouteBuilder(
+                                          pageBuilder: (
+                                            context,
+                                            a1,
+                                            a2,
+                                          ) =>
+                                              Settings('Privacy Policy'),
+                                          transitionDuration:
+                                              Duration(seconds: 0),
+                                        ));
+                                    setState(() {});
                                   },
                                   child: Container(
                                     height: 50,
@@ -1369,6 +1199,37 @@ class _ProfileState extends State<Profile> {
                                     ),
                                   ),
                                 ),
+                                Container(height: 10),
+                                GestureDetector(
+                                  onTap: () {},
+                                  child: Container(
+                                    height: 50,
+                                    width: screenWidth * 0.9,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: ThemeProvider.themeOf(context)
+                                          .data
+                                          .accentColor,
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        Container(width: screenWidth * 0.05),
+                                        Icon(Icons.attach_money, size: 30),
+                                        Container(width: screenWidth * 0.05),
+                                        Text(
+                                          "Donate",
+                                          style: TextStyle(
+                                              color:
+                                                  ThemeProvider.themeOf(context)
+                                                      .data
+                                                      .cardColor,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w900),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -1383,7 +1244,21 @@ class _ProfileState extends State<Profile> {
                             child: Row(
                               children: [
                                 GestureDetector(
-                                  onTap: () {},
+                                  onTap: () {
+                                    Navigator.pushReplacement(
+                                        context,
+                                        PageRouteBuilder(
+                                          pageBuilder: (
+                                            context,
+                                            a1,
+                                            a2,
+                                          ) =>
+                                              Settings('Share'),
+                                          transitionDuration:
+                                              Duration(seconds: 0),
+                                        ));
+                                    setState(() {});
+                                  },
                                   child: Container(
                                       decoration: BoxDecoration(
                                           borderRadius:
@@ -1406,7 +1281,21 @@ class _ProfileState extends State<Profile> {
                                 ),
                                 Spacer(),
                                 GestureDetector(
-                                    onTap: () {},
+                                    onTap: () {
+                                      Navigator.pushReplacement(
+                                          context,
+                                          PageRouteBuilder(
+                                            pageBuilder: (
+                                              context,
+                                              a1,
+                                              a2,
+                                            ) =>
+                                                Settings('Feedback'),
+                                            transitionDuration:
+                                                Duration(seconds: 0),
+                                          ));
+                                      setState(() {});
+                                    },
                                     child: Container(
                                         decoration: BoxDecoration(
                                           borderRadius:
